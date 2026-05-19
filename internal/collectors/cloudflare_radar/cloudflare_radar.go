@@ -25,6 +25,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/geo"
 )
@@ -115,12 +116,13 @@ func (c *Collector) fetchOutages(ctx context.Context) ([]events.Event, error) {
 				}
 			}
 			props := map[string]any{
-				"country":    strings.ToUpper(code),
-				"cause":      o.Outage.OutageCause,
-				"type":       o.Outage.OutageType,
-				"event_type": o.EventType,
-				"start":      o.StartDate,
-				"end":        o.EndDate,
+				"country":      strings.ToUpper(code),
+				"cause":        o.Outage.OutageCause,
+				"type":         o.Outage.OutageType,
+				"event_type":   o.EventType,
+				"outage_score": collectorutil.CloudflareOutageScore(o.EventType, o.Outage.OutageType, o.Outage.OutageCause, 0),
+				"start":        o.StartDate,
+				"end":          o.EndDate,
 			}
 			out = append(out, events.Event{
 				Ts:     ts,
@@ -170,9 +172,10 @@ func (c *Collector) fetchAttacks(ctx context.Context) ([]events.Event, error) {
 			rank = i + 1 // API sometimes omits rank; fall back to array index
 		}
 		props := map[string]any{
-			"country": strings.ToUpper(code),
-			"share":   a.Value,
-			"rank":    rank,
+			"country":      strings.ToUpper(code),
+			"share":        a.Value,
+			"rank":         rank,
+			"outage_score": collectorutil.CloudflareOutageScore("", "", "", rank),
 		}
 		out = append(out, events.Event{
 			Ts:     now,

@@ -23,6 +23,7 @@ import (
 	"time"
 
 	"github.com/gordios45/collector/internal/actors"
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/geo"
 	"github.com/gordios45/collector/internal/httpx"
@@ -87,11 +88,12 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 		}
 		ratio := float64(stats.Routed) / float64(stats.Registered)
 		props := actors.EnrichNetworkCountryProps(map[string]any{
-			"country":      cc,
-			"registered":   stats.Registered,
-			"routed":       stats.Routed,
-			"routed_ratio": ratio,
-			"missing_asns": stats.Registered - stats.Routed,
+			"country":         cc,
+			"registered":      stats.Registered,
+			"routed":          stats.Routed,
+			"routed_ratio":    ratio,
+			"missing_asns":    stats.Registered - stats.Routed,
+			"outage_severity": collectorutil.BGPOutageSeverity(ratio, stats.Registered-stats.Routed),
 		}, cc)
 		out = append(out, events.Event{
 			Ts:     now,

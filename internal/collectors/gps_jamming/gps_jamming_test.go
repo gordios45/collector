@@ -31,6 +31,9 @@ bad-h3,3,2
 	if got := ev.Props["intensity"]; got != 0.1 {
 		t.Fatalf("intensity = %#v, want 0.1", got)
 	}
+	if got := ev.Props["intensity_score"]; got != 0.75 {
+		t.Fatalf("intensity_score = %#v, want 0.75", got)
+	}
 	if ev.Lat == 0 && ev.Lon == 0 {
 		t.Fatal("expected H3 centroid lat/lon")
 	}

@@ -246,6 +246,7 @@ func eventFromCAP(item alertHubItem, alert capAlert) (events.Event, bool) {
 		"civil_alert_score":       civilAlertScore(p),
 		"source_payload_validity": validity(ts, expires, "global_cap_active_alert_window"),
 	}
+	addContextScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: sourceID,
@@ -296,6 +297,7 @@ func eventFromFeature(feat feature) (events.Event, bool) {
 		"source_payload_validity": validity(ts, expires, "global_cap_active_alert_window"),
 	}
 	copyProps(props, p)
+	addContextScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: sourceID,
@@ -425,6 +427,27 @@ func civilAlertScore(p map[string]any) float64 {
 		score += 0.3
 	}
 	return propx.ClampFloat(score, 0, 3)
+}
+
+func addContextScores(props map[string]any) {
+	labels := labelsFor(props)
+	labelSet := map[string]bool{}
+	for _, label := range labels {
+		labelSet[label] = true
+	}
+	text := strings.ToLower(strings.Join([]string{
+		textAny(props["event"]), textAny(props["headline"]), textAny(props["description"]), textAny(props["instruction"]), textAny(props["category"]),
+	}, " "))
+	base := civilAlertScore(props)
+	if labelSet["transport_disruption"] || containsAny(text, "road", "rail", "traffic", "airport", "closure", "closed", "transport") {
+		props["transport_disruption_score"] = propx.ClampFloat(math.Max(base, 1.0), 0, 3)
+	}
+	if labelSet["infrastructure_disruption"] || containsAny(text, "power", "electric", "outage", "water supply", "telecom", "infrastructure") {
+		props["power_infra_score"] = propx.ClampFloat(math.Max(base, 1.0), 0, 3)
+	}
+	if labelSet["geological_hazard"] || containsAny(text, "earthquake", "tsunami", "volcano", "volcanic", "eruption") {
+		props["geological_hazard_score"] = propx.ClampFloat(math.Max(base, 1.0), 0, 3)
+	}
 }
 
 func geoJSONCentroid(g geoJSONGeometry) (float64, float64, bool) {

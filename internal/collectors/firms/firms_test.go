@@ -4,6 +4,7 @@
 package firms
 
 import (
+	"math"
 	"testing"
 	"time"
 )
@@ -36,5 +37,11 @@ func TestParseFIRMSCSVAddsFeedIdentity(t *testing.T) {
 	}
 	if got := evs[0].Props["thermal_pass_id"]; got == "" {
 		t.Fatal("missing thermal_pass_id")
+	}
+	if got, _ := evs[0].Props["frp_score"].(float64); math.Abs(got-0.70710678) > 0.0001 {
+		t.Fatalf("frp_score=%v", got)
+	}
+	if got, _ := evs[0].Props["brightness_score"].(float64); math.Abs(got-1.075) > 0.0001 {
+		t.Fatalf("brightness_score=%v", got)
 	}
 }

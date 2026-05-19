@@ -19,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -144,6 +145,7 @@ func parseFIRMSCSV(f feed, buf []byte, fallbackTS time.Time) ([]events.Event, er
 			"validity_basis": "firms_nrt_active_fire_detection",
 		}
 		props["source_api_endpoint"] = f.URL
+		addThermalScores(props, idx, row)
 		// Natural key: lat+lon+time should be close to unique.
 		ext := passID
 		out = append(out, events.Event{
@@ -152,6 +154,29 @@ func parseFIRMSCSV(f feed, buf []byte, fallbackTS time.Time) ([]events.Event, er
 		})
 	}
 	return out, nil
+}
+
+func addThermalScores(props map[string]any, idx map[string]int, row []string) {
+	if frp, ok := columnFloat(idx, row, "frp"); ok {
+		props["frp_score"] = collectorutil.FIRMSFRPScore(frp)
+	}
+	if brightness, ok := columnFloat(idx, row, "bright_ti4", "brightness"); ok {
+		props["brightness_score"] = collectorutil.ThermalBrightnessScore(brightness, 20)
+	}
+}
+
+func columnFloat(idx map[string]int, row []string, keys ...string) (float64, bool) {
+	for _, key := range keys {
+		i, ok := idx[key]
+		if !ok || i >= len(row) {
+			continue
+		}
+		v, err := strconv.ParseFloat(strings.TrimSpace(row[i]), 64)
+		if err == nil {
+			return v, true
+		}
+	}
+	return 0, false
 }
 
 func thermalPassID(f feed, ts time.Time, lat, lon string) string {

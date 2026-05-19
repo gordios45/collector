@@ -18,6 +18,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -216,6 +217,8 @@ func eventsFromCAP(buf []byte, item alertItem, m member, capURL, lastUpdated str
 				"source_api_endpoint": alertsURL,
 				"lastUpdated":         lastUpdated,
 			}
+			collectorutil.AddAlertScores(props)
+			collectorutil.AddWMOHazardScores(props)
 			out = append(out, events.Event{
 				Ts:     ts,
 				Source: "wmo_cap_alert_areas",

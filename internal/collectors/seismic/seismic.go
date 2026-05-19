@@ -7,9 +7,9 @@ package seismic
 
 import (
 	"context"
-	"fmt"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -53,6 +53,15 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 		for k, v := range f.Properties {
 			props[k] = v
 		}
+		if mag, ok := floatAt(props, "mag"); ok {
+			props["mag_score"] = collectorutil.SeismicMagnitudeScore(mag)
+		}
+		if score := collectorutil.SeismicBlastLikeScore(props); score > 0 {
+			props["blast_like_score"] = score
+		}
+		if tsunami, ok := floatAt(props, "tsunami"); ok && tsunami > 0 {
+			props["tsunami_flag"] = 1.5
+		}
 		out = append(out, events.Event{
 			Ts:     ts,
 			Source: "seismic",
@@ -62,6 +71,22 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 			Props:  props,
 		})
 	}
-	_ = fmt.Sprintf // (placeholder to keep import explicit)
 	return out, nil
+}
+
+func floatAt(props map[string]any, key string) (float64, bool) {
+	switch v := props[key].(type) {
+	case float64:
+		return v, true
+	case float32:
+		return float64(v), true
+	case int:
+		return float64(v), true
+	case int64:
+		return float64(v), true
+	case int32:
+		return float64(v), true
+	default:
+		return 0, false
+	}
 }

@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 )
 
@@ -217,6 +218,8 @@ func event(ts time.Time, id string, lat, lon float64, props map[string]any) even
 	if ts.IsZero() {
 		ts = time.Now().UTC()
 	}
+	collectorutil.AddAlertScores(props)
+	collectorutil.AddWMOHazardScores(props)
 	return events.Event{Ts: ts, Source: sourceID, ExtID: stableID(id), Lat: lat, Lon: lon, Props: props}
 }
 

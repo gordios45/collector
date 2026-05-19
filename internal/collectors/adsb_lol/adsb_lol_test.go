@@ -6,6 +6,7 @@ package adsb_lol
 import (
 	"context"
 	"encoding/json"
+	"math"
 	"os"
 	"testing"
 	"time"
@@ -50,8 +51,35 @@ func TestAircraftEventMapsPublicADSBFields(t *testing.T) {
 	if got := ev.Props["callsign"]; got != "TEST1" {
 		t.Fatalf("callsign=%v", got)
 	}
+	if got := ev.Props["military_activity_score"]; got != float64(1) {
+		t.Fatalf("military_activity_score=%v", got)
+	}
+	if got := ev.Props["emergency_score"]; got != float64(2) {
+		t.Fatalf("emergency_score=%v", got)
+	}
 	if _, ok := ev.Props["source_payload_validity"].(map[string]any); !ok {
 		t.Fatalf("missing validity range")
+	}
+}
+
+func TestAircraftEventAddsLowAltitudeScore(t *testing.T) {
+	lat, lon := 38.9, -77.0
+	gs := 120.0
+	rawAlt := json.RawMessage(`2000`)
+	ac := aircraft{
+		Hex:     "ABC124",
+		AltBaro: rawAlt,
+		Lat:     &lat,
+		Lon:     &lon,
+		GS:      &gs,
+	}
+	ev, ok := aircraftEvent(ac, "aoi", time.Date(2026, 5, 2, 12, 0, 0, 0, time.UTC))
+	if !ok {
+		t.Fatalf("aircraft skipped")
+	}
+	got, _ := ev.Props["low_altitude_score"].(float64)
+	if math.Abs(got-1.1808) > 0.0001 {
+		t.Fatalf("low_altitude_score=%v", got)
 	}
 }
 

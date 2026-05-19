@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"github.com/gordios45/collector/internal/actors"
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/geo"
 	"github.com/gordios45/collector/internal/sources"
@@ -273,13 +274,14 @@ func (c *Collector) flush(aggs map[string]*countryAgg) {
 			ratio = float64(a.withdrawals) / float64(totalPrefixes)
 		}
 		props := actors.EnrichNetworkASNProps(map[string]any{
-			"country":          cc,
-			"updates":          a.updates,
-			"announcements":    a.announcements,
-			"withdrawals":      a.withdrawals,
-			"withdrawal_ratio": ratio,
-			"watched_asns":     asns,
-			"sample_prefixes":  a.prefixes,
+			"country":                   cc,
+			"updates":                   a.updates,
+			"announcements":             a.announcements,
+			"withdrawals":               a.withdrawals,
+			"withdrawal_ratio":          ratio,
+			"routing_instability_score": collectorutil.RISRoutingInstabilityScore(a.updates, a.withdrawals, ratio),
+			"watched_asns":              asns,
+			"sample_prefixes":           a.prefixes,
 		}, cc, asns)
 		c.sink.Push(context.Background(), events.Event{
 			Ts:     ts,

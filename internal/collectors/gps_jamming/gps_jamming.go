@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 
@@ -111,6 +112,7 @@ func parseGPSJamCSV(buf []byte, dateStr string) ([]events.Event, error) {
 				"count_good_aircraft": good,
 				"count_bad_aircraft":  bad,
 				"intensity":           intensity,
+				"intensity_score":     collectorutil.GPSJammingIntensityScore(intensity, bad),
 				"date":                dateStr,
 			},
 		})

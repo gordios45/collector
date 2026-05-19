@@ -19,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -111,6 +112,7 @@ func parseCSV(buf []byte, sensor, area, endpoint string, fallbackTS time.Time) (
 				props[k] = row[i]
 			}
 		}
+		addThermalScores(props, idx, row)
 		ext := sensor + "_" + tsStr + "_" + row[idx["latitude"]] + "_" + row[idx["longitude"]]
 		out = append(out, events.Event{
 			Ts:     ts.UTC(),
@@ -122,6 +124,29 @@ func parseCSV(buf []byte, sensor, area, endpoint string, fallbackTS time.Time) (
 		})
 	}
 	return out, nil
+}
+
+func addThermalScores(props map[string]any, idx map[string]int, row []string) {
+	if frp, ok := columnFloat(idx, row, "frp", "power", "fire_power"); ok {
+		props["frp_score"] = collectorutil.GeoThermalFRPScore(frp)
+	}
+	if brightness, ok := columnFloat(idx, row, "bright_ti4", "brightness", "temperature", "temp"); ok {
+		props["brightness_score"] = collectorutil.ThermalBrightnessScore(brightness, 18)
+	}
+}
+
+func columnFloat(idx map[string]int, row []string, keys ...string) (float64, bool) {
+	for _, key := range keys {
+		i, ok := idx[key]
+		if !ok || i >= len(row) {
+			continue
+		}
+		v, err := strconv.ParseFloat(strings.TrimSpace(row[i]), 64)
+		if err == nil {
+			return v, true
+		}
+	}
+	return 0, false
 }
 
 func redactedEndpoint(sensor, area string) string {

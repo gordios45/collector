@@ -13,6 +13,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -143,6 +144,8 @@ func eventFromItem(item alertItem, members map[string]member, lastUpdated string
 		"source_api_endpoint": alertsURL,
 		"lastUpdated":         lastUpdated,
 	}
+	collectorutil.AddAlertScores(props)
+	collectorutil.AddWMOHazardScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "wmo_alert_hub",

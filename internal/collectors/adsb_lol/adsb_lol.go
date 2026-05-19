@@ -20,6 +20,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -231,6 +232,15 @@ func aircraftEvent(ac aircraft, endpointLabel string, snap time.Time) (events.Ev
 			"valid_end":      snap.Add(2 * time.Minute).Format(time.RFC3339),
 			"validity_basis": "adsb_snapshot_freshness",
 		},
+	}
+	if score := collectorutil.ADSBMilitaryActivityScore(military); score > 0 {
+		props["military_activity_score"] = score
+	}
+	if score := collectorutil.ADSBEmergencyScore(ac.Emergency, ac.Squawk); score > 0 {
+		props["emergency_score"] = score
+	}
+	if score := collectorutil.ADSBLowAltitudeScore(alt, velocity, onGround); score > 0 {
+		props["low_altitude_score"] = score
 	}
 	if ac.DBFlags != nil {
 		props["db_flags"] = *ac.DBFlags

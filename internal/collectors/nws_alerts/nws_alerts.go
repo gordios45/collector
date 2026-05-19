@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -47,6 +48,8 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 				ts = t.UTC()
 			}
 		}
+		collectorutil.AddAlertScores(f.Properties)
+		collectorutil.AddNWSHazardScores(f.Properties)
 		out = append(out, events.Event{
 			Ts: ts, Source: "nws_alerts", ExtID: f.ID,
 			Lat: lat, Lon: lon, Props: f.Properties,

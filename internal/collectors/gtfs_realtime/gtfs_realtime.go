@@ -26,6 +26,7 @@ import (
 	gtfs "github.com/MobilityData/gtfs-realtime-bindings/golang/gtfs"
 	"google.golang.org/protobuf/proto"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 )
 
@@ -228,11 +229,15 @@ func alertEvents(feed feedSpec, msg *gtfs.FeedMessage, fetchedAt, now time.Time)
 			"cause":           a.GetCause().String(),
 			"effect":          a.GetEffect().String(),
 			"severity_level":  a.GetSeverityLevel().String(),
-			"header_text":     translatedText(a.GetHeaderText()),
-			"description":     translatedText(a.GetDescriptionText()),
-			"valid_start":     validStart.Format(time.RFC3339),
-			"valid_end":       validEnd.Format(time.RFC3339),
-			"validity_basis":  "gtfs_rt_alert_active_period",
+			"service_alert_score": collectorutil.GTFSServiceAlertScore(
+				a.GetEffect().String(),
+				a.GetSeverityLevel().String(),
+			),
+			"header_text":    translatedText(a.GetHeaderText()),
+			"description":    translatedText(a.GetDescriptionText()),
+			"valid_start":    validStart.Format(time.RFC3339),
+			"valid_end":      validEnd.Format(time.RFC3339),
+			"validity_basis": "gtfs_rt_alert_active_period",
 		}
 		out = append(out, events.Event{
 			Ts:     snap,

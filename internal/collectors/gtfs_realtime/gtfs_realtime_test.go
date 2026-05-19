@@ -89,6 +89,9 @@ func TestAlertEventsUseConfiguredCentroidAndActivePeriod(t *testing.T) {
 	if got := evs[0].Props["effect"]; got != "NO_SERVICE" {
 		t.Fatalf("effect=%v", got)
 	}
+	if got := evs[0].Props["service_alert_score"]; got != 2.6 {
+		t.Fatalf("service_alert_score=%v", got)
+	}
 	if got := evs[0].Props["valid_start"]; got != "2026-05-02T11:58:20Z" {
 		t.Fatalf("valid_start=%v", got)
 	}
