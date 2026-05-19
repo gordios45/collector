@@ -253,6 +253,7 @@ func event(ts time.Time, id string, lat, lon float64, props map[string]any) even
 	if ts.IsZero() {
 		ts = time.Now().UTC()
 	}
+	addRegionalWildfireSubtypeScores(props)
 	props["source_payload_validity"] = map[string]any{
 		"valid_start":    ts.Format(time.RFC3339),
 		"valid_end":      ts.Add(48 * time.Hour).Format(time.RFC3339),
@@ -282,6 +283,75 @@ func wildfireScore(p map[string]any) float64 {
 		score += 0.5
 	}
 	return propx.ClampFloat(score, 0, 3)
+}
+
+func addRegionalWildfireSubtypeScores(props map[string]any) {
+	score, _ := floatAny(props["wildfire_context_score"])
+	acres, _ := floatAny(props["area_acres"])
+	if acres == 0 {
+		acres, _ = floatAny(props["AcresBurned"])
+	}
+	if acres == 0 {
+		acres, _ = floatAny(props["acres"])
+	}
+	contained, ok := floatAny(props["percent_contained"])
+	if !ok {
+		contained, _ = floatAny(props["PercentContained"])
+	}
+	text := strings.ToLower(strings.Join([]string{
+		textAny(props["title"]),
+		textAny(props["raw_title"]),
+		textAny(props["description"]),
+		textAny(props["category"]),
+		textAny(props["type"]),
+		textAny(props["incident_type"]),
+		textAny(props["status"]),
+		textAny(props["labels"]),
+	}, " "))
+	if plannedFireText(text) {
+		props["planned_burn_score"] = propx.ClampFloat(math.Max(score, 1.4), 0, 3)
+	}
+	if uncontrolledFireText(text) {
+		props["uncontrolled_fire_score"] = propx.ClampFloat(math.Max(score, 1.0), 0, 3)
+	}
+	if acres >= 1000 {
+		props["large_fire_score"] = propx.ClampFloat(math.Log10(acres)/2.0, 0, 3)
+	}
+	if contained > 0 && contained < 30 {
+		props["low_containment_score"] = 1.0
+	}
+}
+
+func plannedFireText(text string) bool {
+	return containsAny(text,
+		"planned burn",
+		"planned hazard reduction",
+		"hazard reduction",
+		"prescribed burn",
+		"prescribed fire",
+		"controlled burn",
+		"control burn",
+		"fuel reduction",
+		"cultural burn",
+		"pile burn",
+		"backburn",
+		"back burning",
+		"burn off",
+		"burnoff",
+	)
+}
+
+func uncontrolledFireText(text string) bool {
+	return containsAny(text,
+		"out of control",
+		"not under control",
+		"emergency warning",
+		"watch and act",
+		"evacuate",
+		"evacuation",
+		"threatening",
+		"rapid rate of spread",
+	)
 }
 
 func wildfireText(s string) bool {

@@ -19,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 )
 
@@ -142,6 +143,7 @@ func eventFromBlock(block string) (events.Event, bool) {
 			"validity_basis": "vaac_text_advisory_forecast_window",
 		},
 	}
+	collectorutil.AddVAACScores(props)
 	return events.Event{Ts: ts, Source: sourceID, ExtID: "bom_recent:" + extID, Lat: lat, Lon: lon, Props: props}, true
 }
 

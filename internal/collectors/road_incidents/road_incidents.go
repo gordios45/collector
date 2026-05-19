@@ -1099,6 +1099,7 @@ func event(ts time.Time, id string, lat, lon float64, props map[string]any) even
 	if ts.IsZero() {
 		ts = time.Now().UTC()
 	}
+	addRoadSubtypeScores(props)
 	return events.Event{Ts: ts, Source: sourceID, ExtID: stableID(id), Lat: lat, Lon: lon, Props: props}
 }
 
@@ -1145,6 +1146,46 @@ func roadScore(parts ...string) float64 {
 		score += 0.2
 	}
 	return propx.ClampFloat(score, 0, 3)
+}
+
+func addRoadSubtypeScores(props map[string]any) {
+	score, _ := floatAny(props["road_disruption_score"])
+	text := strings.ToLower(strings.Join([]string{
+		textAny(props["title"]),
+		textAny(props["description"]),
+		textAny(props["incident_type"]),
+		textAny(props["condition"]),
+	}, " "))
+	labels := labelSet(props["labels"])
+	if labels["road_closure"] || containsAny(text, "closed", "closure", "blocked", "detour", "all lanes") {
+		props["closure_score"] = propx.ClampFloat(math.Max(score, 1.2), 0, 3)
+	}
+	if labels["road_accident"] || containsAny(text, "crash", "collision", "accident") {
+		props["crash_score"] = propx.ClampFloat(math.Max(score, 0.9), 0, 3)
+	}
+	if labels["hazmat"] || containsAny(text, "hazmat", "chemical", "spill") {
+		props["hazmat_score"] = propx.ClampFloat(math.Max(score, 1.4), 0, 3)
+	}
+}
+
+func labelSet(v any) map[string]bool {
+	out := map[string]bool{}
+	switch labels := v.(type) {
+	case []string:
+		for _, label := range labels {
+			out[strings.ToLower(strings.TrimSpace(label))] = true
+		}
+	case []any:
+		for _, item := range labels {
+			out[strings.ToLower(strings.TrimSpace(fmt.Sprint(item)))] = true
+		}
+	case string:
+		for _, label := range strings.Split(labels, ",") {
+			out[strings.ToLower(strings.Trim(strings.TrimSpace(label), "[]\"'"))] = true
+		}
+	}
+	delete(out, "")
+	return out
 }
 
 func copyProps(dst map[string]any, src map[string]any) {

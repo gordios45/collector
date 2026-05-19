@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -132,6 +133,7 @@ func eventFromRecord(rec []string, typ string, day time.Time, dayTag string, now
 		"day":                 dayTag,
 		"source_api_endpoint": endpointForDay(dayTag),
 	}
+	collectorutil.AddSPCStormReportScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "spc_storm_reports",

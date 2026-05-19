@@ -33,6 +33,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -215,6 +216,7 @@ func buildEvents(tcID string, entry targetTcEntry, spec []specRecord) []events.E
 			"agency":         "JMA RSMC Tokyo",
 			"basin":          "WP",
 		}
+		collectorutil.AddTropicalCycloneScores(props, false)
 		out = append(out, events.Event{
 			Ts:     ts,
 			Source: "jma_rsmc",

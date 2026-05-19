@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -127,6 +128,7 @@ func (c *Collector) eventForFeature(ctx context.Context, f feedFeature) (events.
 			props["product_enrichment_error"] = err.Error()
 		}
 	}
+	collectorutil.AddUSGSShakeMapScores(props)
 
 	return events.Event{
 		Ts:     ts,

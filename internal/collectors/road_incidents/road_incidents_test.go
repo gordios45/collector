@@ -20,4 +20,7 @@ func TestParseDATEXEvents(t *testing.T) {
 	if ev.Props["country"] != "Netherlands" || ev.Props["severity"] != "high" {
 		t.Fatalf("bad props: %+v", ev.Props)
 	}
+	if ev.Props["closure_score"] == nil {
+		t.Fatalf("missing closure score: %+v", ev.Props)
+	}
 }

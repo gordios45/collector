@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -133,6 +134,7 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 				"trend":            a.Trend,
 				"feed_update_time": doc.UpdateTime,
 			}
+			collectorutil.AddFAAStatusScores(props)
 			out = append(out, events.Event{
 				Ts: now, Source: "faa_status", ExtID: code + "_" + category,
 				Lat: loc[0], Lon: loc[1], Props: props,
@@ -152,25 +154,27 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 			}
 			lat /= float64(len(f.Line))
 			lon /= float64(len(f.Line))
+			props := map[string]any{
+				"category":            "airspace_flow",
+				"ctl_element":         id,
+				"reason":              f.Reason,
+				"avg":                 f.Avg,
+				"floor":               f.Floor,
+				"ceiling":             f.Ceiling,
+				"afp_start_time":      f.AFPStartTime,
+				"afp_end_time":        f.AFPEndTime,
+				"fca_start_date_time": f.FCAStartDateTime,
+				"fca_end_date_time":   f.FCAEndDateTime,
+				"feed_update_time":    doc.UpdateTime,
+			}
+			collectorutil.AddFAAStatusScores(props)
 			out = append(out, events.Event{
 				Ts:     now,
 				Source: "faa_status",
 				ExtID:  id + "_airspace_flow",
 				Lat:    lat,
 				Lon:    lon,
-				Props: map[string]any{
-					"category":            "airspace_flow",
-					"ctl_element":         id,
-					"reason":              f.Reason,
-					"avg":                 f.Avg,
-					"floor":               f.Floor,
-					"ceiling":             f.Ceiling,
-					"afp_start_time":      f.AFPStartTime,
-					"afp_end_time":        f.AFPEndTime,
-					"fca_start_date_time": f.FCAStartDateTime,
-					"fca_end_date_time":   f.FCAEndDateTime,
-					"feed_update_time":    doc.UpdateTime,
-				},
+				Props:  props,
 			})
 		}
 	}

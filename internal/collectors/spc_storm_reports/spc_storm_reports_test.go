@@ -29,6 +29,9 @@ Time,Size,Location,County,State,Lat,Lon,Comments
 	if rows[1].Ts.Format(time.RFC3339) != "2026-04-28T14:15:00Z" {
 		t.Fatalf("timestamp=%s", rows[1].Ts.Format(time.RFC3339))
 	}
+	if rows[0].Props["tornado_score"] != float64(2) || rows[1].Props["wind_damage_score"] == nil || rows[2].Props["hail_score"] == nil {
+		t.Fatalf("missing storm report scores: %+v %+v %+v", rows[0].Props, rows[1].Props, rows[2].Props)
+	}
 }
 
 func TestParseReportTimePads(t *testing.T) {

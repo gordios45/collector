@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -143,6 +144,7 @@ func eventsFromDetail(detail noticeDetail) []events.Event {
 			"color_code":        v.ColorCode,
 			"summary":           summary,
 		}
+		collectorutil.AddVolcanoNoticeScores(props)
 		ext := detail.NoticeIdentifier + ":" + firstNonEmpty(v.VNum, v.Name)
 		out = append(out, events.Event{
 			Ts:     ts,

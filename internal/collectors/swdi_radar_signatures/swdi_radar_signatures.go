@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -126,6 +127,7 @@ func eventFromRow(dataset, sourceURL string, row map[string]string) (events.Even
 			props[k] = v
 		}
 	}
+	collectorutil.AddSWDIRadarScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "swdi_radar_signatures",

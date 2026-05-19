@@ -50,4 +50,7 @@ func TestEventsFromFeatures(t *testing.T) {
 	if ev.Props["flynn_region"] != "SWITZERLAND" || ev.Props["mag"] != 1.2 {
 		t.Fatalf("props not preserved: %#v", ev.Props)
 	}
+	if ev.Props["shallow_score"] != 1.5 {
+		t.Fatalf("shallow_score=%v props=%#v", ev.Props["shallow_score"], ev.Props)
+	}
 }

@@ -26,6 +26,9 @@ func TestEventsFromCSVTVS(t *testing.T) {
 	if ev.Props["dataset"] != "nx3tvs" || ev.Props["cell_type"] != "TVS" {
 		t.Fatalf("bad props: %#v", ev.Props)
 	}
+	if ev.Props["tvs_score"] != 2.5 || ev.Props["radar_severity_score"] != 2.5 {
+		t.Fatalf("missing radar scores: %#v", ev.Props)
+	}
 }
 
 func TestEventsFromCSVSummary(t *testing.T) {

@@ -13,6 +13,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/geo"
 	"github.com/gordios45/collector/internal/httpx"
@@ -78,9 +79,13 @@ func (c *APICollector) Fetch(ctx context.Context) ([]events.Event, error) {
 		if ext == "<nil>" || ext == "" {
 			continue
 		}
+		props := it.Properties
+		if score := collectorutil.AirspaceRestrictionDurationScore(props); score > 0 {
+			props["long_duration_restriction_score"] = score
+		}
 		ev := events.Event{
 			Ts: now, Source: "notam_faa", ExtID: ext,
-			Lat: lat, Lon: lon, Props: it.Properties,
+			Lat: lat, Lon: lon, Props: props,
 		}
 		if wkt != "" {
 			ev.Geom = wkt

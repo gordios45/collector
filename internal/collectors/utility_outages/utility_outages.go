@@ -528,6 +528,7 @@ func event(ts time.Time, id string, lat, lon float64, wkt string, props map[stri
 	if wkt == "" {
 		wkt = fmt.Sprintf("POINT(%f %f)", lon, lat)
 	}
+	addUtilityOutageSubtypeScores(props)
 	props["source_payload_validity"] = map[string]any{
 		"valid_start":    ts.Format(time.RFC3339),
 		"valid_end":      time.Now().UTC().Add(4 * time.Hour).Format(time.RFC3339),
@@ -549,6 +550,20 @@ func outageScore(affected float64, cause, status any) float64 {
 		score += 0.6
 	}
 	return propx.ClampFloat(score, 0, 4)
+}
+
+func addUtilityOutageSubtypeScores(props map[string]any) {
+	score, _ := floatAny(props["outage_score"])
+	customers, _ := floatAny(props["affected_customers"])
+	if current, ok := floatAny(props["customers_out_now"]); ok {
+		customers = math.Max(customers, current)
+	}
+	if customers > 0 {
+		props["affected_customers_score"] = propx.ClampFloat(math.Log1p(math.Max(0, customers))/4.0, 0, 3)
+	}
+	if customers >= 5000 || score >= 2.5 {
+		props["major_outage_score"] = propx.ClampFloat(math.Max(score, 1.5), 0, 4)
+	}
 }
 
 func centroidAndWKT(g map[string]any) (float64, float64, string, bool) {

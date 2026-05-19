@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -134,6 +135,7 @@ func eventFromEntry(center, feedURL string, feed atomFeed, entry atomEntry) (eve
 		"cap_url":         capURL,
 		"bulletin_url":    bulletinURL,
 	}
+	collectorutil.AddNOAATsunamiScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "noaa_tsunami",

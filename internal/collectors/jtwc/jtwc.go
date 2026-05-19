@@ -52,6 +52,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -223,6 +224,7 @@ func parseATCF(buf []byte, filename string, cutoff time.Time) []events.Event {
 			"tech":       "BEST",
 			"file":       filename,
 		}
+		collectorutil.AddTropicalCycloneScores(props, false)
 		out = append(out, events.Event{
 			Ts:     f.ts,
 			Source: "jtwc",

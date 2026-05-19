@@ -35,6 +35,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 )
 
@@ -138,6 +139,7 @@ func parseCSV(buf []byte, now time.Time) ([]events.Event, error) {
 			"pres_mb":  pres,
 			"agency":   field(row, cols.agency),
 		}
+		collectorutil.AddTropicalCycloneScores(props, false)
 		out = append(out, events.Event{
 			Ts:     ts,
 			Source: "ibtracs",

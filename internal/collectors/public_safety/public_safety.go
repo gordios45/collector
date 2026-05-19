@@ -318,6 +318,7 @@ func event(ts time.Time, id string, lat, lon float64, props map[string]any) even
 	if ts.IsZero() {
 		ts = time.Now().UTC()
 	}
+	addPublicSafetySubtypeScores(props)
 	props["source_payload_validity"] = map[string]any{
 		"valid_start":    ts.Format(time.RFC3339),
 		"valid_end":      ts.Add(4 * time.Hour).Format(time.RFC3339),
@@ -373,6 +374,59 @@ func incidentScore(kind string, labels []string) float64 {
 		score += 0.4
 	}
 	return propx.ClampFloat(score, 0, 3)
+}
+
+func addPublicSafetySubtypeScores(props map[string]any) {
+	score, _ := floatAny(props["incident_score"])
+	labels := labelSet(props["labels"])
+	text := strings.ToLower(strings.Join([]string{
+		textAny(props["title"]),
+		textAny(props["description"]),
+		textAny(props["incident_type"]),
+		textAny(props["address"]),
+	}, " "))
+	if labels["structure_fire"] {
+		props["structure_fire_report_score"] = propx.ClampFloat(math.Max(score, 1.5), 0, 3)
+	}
+	if labels["wildfire"] || labels["brush_fire"] || labels["vegetation_fire"] ||
+		containsAny(text, "brush fire", "vegetation fire", "wildland fire", "wildfire", "forest fire", "grass fire") {
+		props["vegetation_fire_report_score"] = propx.ClampFloat(math.Max(score, 1.2), 0, 3)
+	}
+	if labels["hazmat"] || labels["chemical_spill"] {
+		props["hazmat_report_score"] = propx.ClampFloat(math.Max(score, 1.4), 0, 3)
+	}
+	if labels["road_accident"] {
+		props["road_accident_report_score"] = propx.ClampFloat(math.Max(score, 0.8), 0, 3)
+	}
+	if labels["gas_leak"] {
+		props["gas_leak_report_score"] = propx.ClampFloat(math.Max(score, 1.2), 0, 3)
+	}
+	if labels["power_outage"] || containsAny(text, "wire down", "wires down", "power line") {
+		props["power_line_report_score"] = propx.ClampFloat(math.Max(score, 0.8), 0, 3)
+	}
+	if labels["shooting"] || labels["assault"] {
+		props["violence_report_score"] = propx.ClampFloat(math.Max(score, 0.8), 0, 3)
+	}
+}
+
+func labelSet(v any) map[string]bool {
+	out := map[string]bool{}
+	switch labels := v.(type) {
+	case []string:
+		for _, label := range labels {
+			out[strings.ToLower(strings.TrimSpace(label))] = true
+		}
+	case []any:
+		for _, item := range labels {
+			out[strings.ToLower(strings.TrimSpace(fmt.Sprint(item)))] = true
+		}
+	case string:
+		for _, label := range strings.Split(labels, ",") {
+			out[strings.ToLower(strings.Trim(strings.TrimSpace(label), "[]\"'"))] = true
+		}
+	}
+	delete(out, "")
+	return out
 }
 
 func isLowSignalPublicSafety(kind string) bool {

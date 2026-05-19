@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -118,6 +119,7 @@ func eventsFromKML(kml []byte, s storm, productURL string) []events.Event {
 				"description":         strings.TrimSpace(pm.Description),
 				"source_api_endpoint": currentStormsURL,
 			}
+			collectorutil.AddTropicalCycloneScores(props, true)
 			out = append(out, events.Event{
 				Ts:     ts,
 				Source: "nhc_gis_cones",

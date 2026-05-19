@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -110,6 +111,7 @@ func eventFromFeature(f feature, fallback time.Time) (events.Event, bool) {
 		"magtype":             f.Properties.MagType,
 		"source_api_endpoint": endpoint,
 	}
+	collectorutil.AddEMSCSeismicScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "emsc_seismic",

@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gordios45/collector/internal/collectors/collectorutil"
 	"github.com/gordios45/collector/internal/events"
 	"github.com/gordios45/collector/internal/httpx"
 )
@@ -130,6 +131,7 @@ func eventFromTextPage(raw, fullURL string) (events.Event, bool, error) {
 		"advisory_url":        fullURL,
 		"source_api_endpoint": indexURL,
 	}
+	collectorutil.AddVAACScores(props)
 	return events.Event{
 		Ts:     ts,
 		Source: "vaac_tokyo",
