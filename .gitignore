@@ -4,6 +4,7 @@ backups/
 .env
 .env-local
 .cache/
+.idea/
 /ingester
 tile-cache/
 .DS_Store
