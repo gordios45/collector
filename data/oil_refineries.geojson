@@ -1,0 +1,259 @@
+{
+  "type": "FeatureCollection",
+  "name": "Major Oil Refineries",
+  "description": "Top 25 strategic oil refineries. Capacity in thousand barrels per day (kbpd). Bias toward Gulf + Asia-Pacific where the current crisis sits.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jamnagar Refinery",
+        "country": "IN",
+        "operator": "Reliance Industries",
+        "capacity_kbpd": 1240
+      },
+      "geometry": { "type": "Point", "coordinates": [69.89, 22.43] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ulsan Refinery",
+        "country": "KR",
+        "operator": "SK Innovation",
+        "capacity_kbpd": 840
+      },
+      "geometry": { "type": "Point", "coordinates": [129.36, 35.50] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ruwais Refinery",
+        "country": "AE",
+        "operator": "ADNOC",
+        "capacity_kbpd": 817
+      },
+      "geometry": { "type": "Point", "coordinates": [52.78, 24.10] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yeosu Refinery",
+        "country": "KR",
+        "operator": "GS Caltex",
+        "capacity_kbpd": 800
+      },
+      "geometry": { "type": "Point", "coordinates": [127.76, 34.75] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Onsan Refinery",
+        "country": "KR",
+        "operator": "S-Oil",
+        "capacity_kbpd": 669
+      },
+      "geometry": { "type": "Point", "coordinates": [129.35, 35.40] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Tanura Refinery",
+        "country": "SA",
+        "operator": "Saudi Aramco",
+        "capacity_kbpd": 550
+      },
+      "geometry": { "type": "Point", "coordinates": [50.15, 26.64] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baytown Refinery",
+        "country": "US",
+        "operator": "ExxonMobil",
+        "capacity_kbpd": 584
+      },
+      "geometry": { "type": "Point", "coordinates": [-95.01, 29.75] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Port Arthur Refinery",
+        "country": "US",
+        "operator": "Motiva",
+        "capacity_kbpd": 626
+      },
+      "geometry": { "type": "Point", "coordinates": [-93.94, 29.88] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abadan Refinery",
+        "country": "IR",
+        "operator": "NIOC",
+        "capacity_kbpd": 400
+      },
+      "geometry": { "type": "Point", "coordinates": [48.30, 30.35] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Isfahan Refinery",
+        "country": "IR",
+        "operator": "NIOC",
+        "capacity_kbpd": 370
+      },
+      "geometry": { "type": "Point", "coordinates": [51.63, 32.63] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bandar Abbas Refinery",
+        "country": "IR",
+        "operator": "NIOC",
+        "capacity_kbpd": 320
+      },
+      "geometry": { "type": "Point", "coordinates": [56.28, 27.20] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Haifa Refinery",
+        "country": "IL",
+        "operator": "Bazan",
+        "capacity_kbpd": 197,
+        "evidence": "video3 T3 L342-345 (ccZzOGnT4Cg) — struck by Iran MAR 10 2026"
+      },
+      "geometry": { "type": "Point", "coordinates": [35.05, 32.80] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ashdod Refinery",
+        "country": "IL",
+        "operator": "Paz",
+        "capacity_kbpd": 110
+      },
+      "geometry": { "type": "Point", "coordinates": [34.62, 31.81] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mina Al Ahmadi Refinery",
+        "country": "KW",
+        "operator": "KNPC",
+        "capacity_kbpd": 346
+      },
+      "geometry": { "type": "Point", "coordinates": [48.13, 29.08] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Al-Zour Refinery",
+        "country": "KW",
+        "operator": "KIPIC",
+        "capacity_kbpd": 615
+      },
+      "geometry": { "type": "Point", "coordinates": [48.36, 28.74] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BAPCO Sitra Refinery",
+        "country": "BH",
+        "operator": "BAPCO",
+        "capacity_kbpd": 267,
+        "evidence": "video3 T3 L317 (ccZzOGnT4Cg) — Iran retaliation target"
+      },
+      "geometry": { "type": "Point", "coordinates": [50.63, 26.16] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Laffan Refinery",
+        "country": "QA",
+        "operator": "QatarEnergy",
+        "capacity_kbpd": 292
+      },
+      "geometry": { "type": "Point", "coordinates": [51.58, 25.92] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mizushima Complex",
+        "country": "JP",
+        "operator": "ENEOS",
+        "capacity_kbpd": 380
+      },
+      "geometry": { "type": "Point", "coordinates": [133.75, 34.52] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sohar Refinery",
+        "country": "OM",
+        "operator": "ORPIC",
+        "capacity_kbpd": 198
+      },
+      "geometry": { "type": "Point", "coordinates": [56.59, 24.43] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mina Abdullah Refinery",
+        "country": "KW",
+        "operator": "KNPC",
+        "capacity_kbpd": 270
+      },
+      "geometry": { "type": "Point", "coordinates": [48.15, 29.03] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paradip Refinery",
+        "country": "IN",
+        "operator": "IOC",
+        "capacity_kbpd": 300
+      },
+      "geometry": { "type": "Point", "coordinates": [86.65, 20.30] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vadinar Refinery",
+        "country": "IN",
+        "operator": "Nayara Energy",
+        "capacity_kbpd": 405
+      },
+      "geometry": { "type": "Point", "coordinates": [69.76, 22.47] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rotterdam Refinery",
+        "country": "NL",
+        "operator": "Shell Pernis",
+        "capacity_kbpd": 404
+      },
+      "geometry": { "type": "Point", "coordinates": [4.37, 51.88] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Galveston Bay Refinery",
+        "country": "US",
+        "operator": "Marathon",
+        "capacity_kbpd": 593
+      },
+      "geometry": { "type": "Point", "coordinates": [-94.92, 29.36] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Singapore Refinery",
+        "country": "SG",
+        "operator": "ExxonMobil Jurong",
+        "capacity_kbpd": 592
+      },
+      "geometry": { "type": "Point", "coordinates": [103.70, 1.27] }
+    }
+  ]
+}

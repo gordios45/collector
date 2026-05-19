@@ -1,0 +1,372 @@
+{
+  "type": "FeatureCollection",
+  "name": "Maritime Chokepoints",
+  "description": "Polygons bounding the world's strategic maritime chokepoints. Used for GATES layer + DARK-GAP detection (an AIS-off transit inside a polygon is a dark-transit candidate). Coordinates hand-drawn to enclose the narrow passage plus ~10 km approaches.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hormuz",
+        "name": "Strait of Hormuz",
+        "width_km": 33,
+        "daily_oil_mbpd": 21,
+        "pct_world_oil": 20,
+        "risk_level": "critical",
+        "evidence": "video3 T3 L9-18 (ccZzOGnT4Cg)",
+        "baseline_current_count": 150
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              56.0,
+              25.5
+            ],
+            [
+              57.2,
+              26.8
+            ],
+            [
+              57.2,
+              26.2
+            ],
+            [
+              56.8,
+              26.0
+            ],
+            [
+              56.4,
+              25.6
+            ],
+            [
+              56.25,
+              25.3
+            ],
+            [
+              56.5,
+              25.0
+            ],
+            [
+              56.9,
+              24.7
+            ],
+            [
+              57.3,
+              24.4
+            ],
+            [
+              57.3,
+              24.0
+            ],
+            [
+              56.3,
+              24.0
+            ],
+            [
+              55.8,
+              24.8
+            ],
+            [
+              56.0,
+              25.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bab_el_mandeb",
+        "name": "Bab-el-Mandeb",
+        "width_km": 29,
+        "daily_oil_mbpd": 9,
+        "pct_world_oil": 9,
+        "risk_level": "high",
+        "baseline_current_count": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43.1,
+              12.2
+            ],
+            [
+              43.6,
+              12.2
+            ],
+            [
+              43.6,
+              13.0
+            ],
+            [
+              43.1,
+              13.0
+            ],
+            [
+              43.1,
+              12.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "suez",
+        "name": "Suez Canal",
+        "width_km": 0.3,
+        "daily_oil_mbpd": 9,
+        "pct_world_oil": 8,
+        "risk_level": "high",
+        "baseline_current_count": 80
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32.5,
+              29.9
+            ],
+            [
+              32.63,
+              29.9
+            ],
+            [
+              32.63,
+              31.3
+            ],
+            [
+              32.25,
+              31.3
+            ],
+            [
+              32.25,
+              30.7
+            ],
+            [
+              32.45,
+              30.2
+            ],
+            [
+              32.5,
+              29.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "malacca",
+        "name": "Strait of Malacca",
+        "width_km": 64,
+        "daily_oil_mbpd": 23,
+        "pct_world_oil": 21,
+        "risk_level": "critical",
+        "baseline_current_count": 350
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              100.3,
+              1.0
+            ],
+            [
+              103.8,
+              1.0
+            ],
+            [
+              104.2,
+              1.8
+            ],
+            [
+              103.5,
+              2.5
+            ],
+            [
+              102.5,
+              3.2
+            ],
+            [
+              101.5,
+              3.5
+            ],
+            [
+              100.3,
+              3.0
+            ],
+            [
+              100.3,
+              1.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "gibraltar",
+        "name": "Strait of Gibraltar",
+        "width_km": 13,
+        "daily_oil_mbpd": 2,
+        "pct_world_oil": 2,
+        "risk_level": "medium",
+        "baseline_current_count": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5.95,
+              35.85
+            ],
+            [
+              -5.15,
+              35.85
+            ],
+            [
+              -5.15,
+              36.2
+            ],
+            [
+              -5.95,
+              36.2
+            ],
+            [
+              -5.95,
+              35.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bosphorus",
+        "name": "Bosphorus Strait",
+        "width_km": 0.75,
+        "daily_oil_mbpd": 3,
+        "pct_world_oil": 3,
+        "risk_level": "medium",
+        "baseline_current_count": 25
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28.9,
+              40.95
+            ],
+            [
+              29.3,
+              40.95
+            ],
+            [
+              29.3,
+              41.3
+            ],
+            [
+              28.9,
+              41.3
+            ],
+            [
+              28.9,
+              40.95
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "panama",
+        "name": "Panama Canal",
+        "width_km": 0.15,
+        "daily_oil_mbpd": 0.5,
+        "pct_world_oil": 1,
+        "risk_level": "low",
+        "baseline_current_count": 30
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -80.0,
+              8.85
+            ],
+            [
+              -79.4,
+              8.85
+            ],
+            [
+              -79.4,
+              9.5
+            ],
+            [
+              -80.0,
+              9.5
+            ],
+            [
+              -80.0,
+              8.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "danish_straits",
+        "name": "Danish Straits",
+        "width_km": 16,
+        "daily_oil_mbpd": 3,
+        "pct_world_oil": 3,
+        "risk_level": "low",
+        "baseline_current_count": 35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.0,
+              55.0
+            ],
+            [
+              13.0,
+              55.0
+            ],
+            [
+              13.0,
+              56.5
+            ],
+            [
+              10.0,
+              56.5
+            ],
+            [
+              10.0,
+              55.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

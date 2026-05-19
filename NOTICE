@@ -1,0 +1,9 @@
+Gordios45
+
+Copyright 2026 Gordios45 contributors.
+
+This product includes software developed by project contributors, including AI,
+and depends on third-party open-source packages listed in go.mod and go.sum.
+
+Local files under data/ are approximate context fixtures unless
+the file or docs state otherwise. They are not authoritative source datasets.

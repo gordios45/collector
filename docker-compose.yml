@@ -1,0 +1,77 @@
+name: gordios-collection-test
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.timescale-age
+    image: gordios-timescale-age:pg16
+    container_name: gordios-collection-test-db
+    command: ["postgres", "-c", "max_locks_per_transaction=512"]
+    shm_size: "1gb"
+    environment:
+      POSTGRES_USER: gordios
+      POSTGRES_PASSWORD: gordios
+      POSTGRES_DB: gordios_collection_test
+    ports:
+      - "16432:5432"
+    volumes:
+      - collection_test_dbdata:/home/postgres/pgdata/data
+      - ./docker/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gordios -d gordios_collection_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    image: gordios-timescale-age:pg16
+    container_name: gordios-collection-test-migrate
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./migrations:/migrations:ro
+    environment:
+      PGUSER: gordios
+      PGPASSWORD: gordios
+      PGDATABASE: gordios_collection_test
+      PGHOST: db
+    command:
+      - bash
+      - -lc
+      - for f in /migrations/*.sql; do echo "--> $$f"; psql -v ON_ERROR_STOP=1 -f "$$f"; done
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gordios-collection-app:test
+    container_name: gordios-collection-test-gateway
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgres://gordios_raw_gateway:gordios_raw_gateway@db:5432/gordios_collection_test?sslmode=disable
+      GATEWAY_ADDR: :8080
+    ports:
+      - "18080:8080"
+    command: ["/app/gateway"]
+
+  ingester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gordios-collection-app:test
+    container_name: gordios-collection-test-ingester
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgres://gordios_ingester:gordios_ingester@db:5432/gordios_collection_test?sslmode=disable
+      INGESTER_DB_URL: postgres://gordios_ingester:gordios_ingester@db:5432/gordios_collection_test?sslmode=disable
+    command: ["/app/ingester"]
+
+volumes:
+  collection_test_dbdata:
+    name: gordios_collection_test_dbdata

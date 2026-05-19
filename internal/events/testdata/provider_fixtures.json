@@ -1,0 +1,2304 @@
+{
+    "airnow_alerts": {
+        "ts": "2026-05-05T09:00:00Z",
+        "props": {
+            "source_provider": "AIRNow Program, US Environmental Protection Agency",
+            "source_api_endpoint": "http://feeds.enviroflash.info/cap/aggregate.xml",
+            "source_public_url": "http://feeds.enviroflash.info/cap/271.xml?id=sample",
+            "source_provider_kind": "official_air_quality_alert",
+            "title": "Air Quality Alert for Aberdeen",
+            "description": "Particle Pollution (2.5 microns) is forecast to reach 164 AQI - Unhealthy.",
+            "area_desc": "Aberdeen, WA",
+            "severity": "Moderate",
+            "aqi": 164,
+            "air_quality_score": 2,
+            "labels": [
+                "air_quality_alert",
+                "air_pollution",
+                "smoke_or_air_release"
+            ]
+        },
+        "ext_id": "airnow:sample",
+        "has_geom": true
+    },
+    "avalanche_alerts": {
+        "ts": "2026-05-05T09:00:00Z",
+        "props": {
+            "source_provider": "Northwest Avalanche Center",
+            "source_api_endpoint": "https://api.avalanche.org/v2/public/products/map-layer?day=",
+            "source_public_url": "https://nwac.us/",
+            "source_provider_kind": "official_avalanche_forecast",
+            "alert_id": "sample",
+            "title": "Avalanche forecast: Northwest Avalanche Center",
+            "description": "Dangerous avalanche conditions exist.",
+            "event": "Avalanche",
+            "severity": "Moderate",
+            "danger": "considerable",
+            "danger_level": 3,
+            "state": "WA",
+            "avalanche_score": 2.4,
+            "labels": [
+                "avalanche",
+                "severe_weather",
+                "winter_weather"
+            ]
+        },
+        "ext_id": "avalanche:sample",
+        "has_geom": true
+    },
+    "planned_protests": {
+        "ts": "2026-05-06T18:00:00Z",
+        "props": {
+            "source_provider": "DC Action",
+            "source_api_endpoint": "https://calendar.google.com/calendar/ical/dfk2eele63bcudvsqg8hdoponc%40group.calendar.google.com/public/basic.ics",
+            "source_public_url": "https://calendar.google.com/",
+            "source_provider_kind": "public_planned_demonstration_calendar",
+            "title": "Planned protest: Rally for transit funding",
+            "description": "Public rally at Union Station.",
+            "location": "Union Station, Washington, DC",
+            "start_time": "2026-05-06T18:00:00Z",
+            "end_time": "2026-05-06T20:00:00Z",
+            "planned_protest_score": 1.8,
+            "labels": [
+                "planned_demonstration",
+                "protest"
+            ]
+        },
+        "ext_id": "planned:sample",
+        "has_geom": true
+    },
+    "public_safety_incidents": {
+        "ts": "2026-05-05T09:12:00Z",
+        "props": {
+            "source_provider": "San Diego Fire Dispatch",
+            "source_api_endpoint": "https://webapps.sandiego.gov/SDFireDispatch/api/v1/Incidents",
+            "source_public_url": "https://webapps.sandiego.gov/sdfiredispatch/",
+            "source_provider_kind": "official_local_public_safety_feed",
+            "incident_id": "FS260505001",
+            "incident_type": "Commercial structure fire",
+            "title": "Public safety report: structure fire",
+            "address": "100 Market St, San Diego, CA",
+            "incident_score": 2.4,
+            "labels": [
+                "public_safety_incident",
+                "structure_fire"
+            ]
+        },
+        "ext_id": "public-safety:sample",
+        "has_geom": true
+    },
+    "regional_seismic": {
+        "ts": "2026-05-05T09:20:00Z",
+        "props": {
+            "source_provider": "GeoNet New Zealand",
+            "source_api_endpoint": "https://api.geonet.org.nz/quake?MMI=3",
+            "source_public_url": "https://www.geonet.org.nz/earthquake/sample",
+            "source_provider_kind": "official_regional_seismic_authority",
+            "event_id": "sample",
+            "title": "M4.8 earthquake near Wellington",
+            "mag": 4.8,
+            "depth_km": 12,
+            "region": "Wellington",
+            "seismic_authority_score": 2.24,
+            "labels": [
+                "earthquake",
+                "seismic_hazard"
+            ]
+        },
+        "ext_id": "regional-seismic:sample",
+        "has_geom": true
+    },
+    "regional_wildfires": {
+        "ts": "2026-05-05T08:30:00Z",
+        "props": {
+            "source_provider": "CAL FIRE",
+            "source_api_endpoint": "https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=true",
+            "source_public_url": "https://www.fire.ca.gov/incidents/",
+            "source_provider_kind": "official_regional_wildfire_feed",
+            "incident_id": "sample",
+            "title": "Sample Fire",
+            "area_acres": 2500,
+            "percent_contained": 15,
+            "wildfire_context_score": 2.3,
+            "labels": [
+                "wildfire",
+                "fire"
+            ]
+        },
+        "ext_id": "regional-wildfire:sample",
+        "has_geom": true
+    },
+    "road_incidents": {
+        "ts": "2026-05-05T09:10:00Z",
+        "props": {
+            "source_provider": "NCDOT TIMS",
+            "source_api_endpoint": "https://tims.ncdot.gov/tims/api/incidents/",
+            "source_public_url": "https://tims.ncdot.gov/tims/",
+            "source_provider_kind": "official_transport_incident_feed",
+            "title": "Crash - I-40 - lane closure",
+            "description": "Crash with all lanes closed.",
+            "incident_type": "Crash",
+            "road": "I-40",
+            "location": "Wake County",
+            "road_disruption_score": 2.1,
+            "labels": [
+                "road_incident",
+                "road_accident",
+                "road_closure"
+            ]
+        },
+        "ext_id": "road:sample",
+        "has_geom": true
+    },
+    "utility_outages": {
+        "ts": "2026-05-05T09:05:00Z",
+        "props": {
+            "source_provider": "DTE Energy",
+            "source_api_endpoint": "https://outagemap.serv.dteenergy.com/GISRest/services/OMP/OutageLocations/MapServer/2/query",
+            "source_public_url": "https://outage.dteenergy.com/map",
+            "source_provider_kind": "public_utility_outage_map",
+            "outage_id": "sample",
+            "affected_customers": 6200,
+            "cause": "substation",
+            "status": "crew assigned",
+            "estimated_restoration_time": "2026-05-05T13:00:00Z",
+            "outage_score": 3,
+            "labels": [
+                "power_outage"
+            ]
+        },
+        "ext_id": "utility:sample",
+        "has_geom": true
+    },
+    "bgpstream_broker": {
+        "ts": "2026-05-05T09:45:00Z",
+        "props": {
+            "project": "ris",
+            "collector": "rrc00",
+            "latest_update_time": "2026-05-05T09:45:00Z",
+            "update_dump_period_seconds": 300,
+            "update_lag_seconds": 120,
+            "update_stream_lag_score": 0,
+            "source_api_endpoint": "https://broker.bgpstream.caida.org/v2/meta/projects/ris",
+            "docs_url": "https://bgpstream.caida.org/docs/api/broker",
+            "integration_state": "broker_metadata_freshness_only"
+        },
+        "ext_id": "ris:rrc00:1777974300",
+        "has_geom": true
+    },
+    "cams_atmosphere": {
+        "ts": "2026-05-05T09:00:00Z",
+        "props": {
+            "watch_aoi_id": "zone:ukraine",
+            "watch_aoi_kind": "strategic_zone",
+            "watch_aoi_label": "Ukraine",
+            "observed_at": "2026-05-05T09:00:00Z",
+            "carbon_monoxide_ugm3": 221,
+            "nitrogen_dioxide_ugm3": 14.7,
+            "sulphur_dioxide_ugm3": 5.6,
+            "pm25_ugm3": 19.3,
+            "aerosol_optical_depth": 0.08,
+            "dust_ugm3": 1,
+            "air_quality_pressure_score": 0,
+            "dominant_pollutant": "none",
+            "source_api_endpoint": "https://air-quality-api.open-meteo.com/v1/air-quality",
+            "docs_url": "https://open-meteo.com/en/docs/air-quality-api"
+        },
+        "ext_id": "zone_ukraine:20260505T09",
+        "has_geom": true
+    },
+    "eurdep_radiation": {
+        "ts": "2026-05-05T09:00:00Z",
+        "props": {
+            "station_id": "BE0001",
+            "station_name": "Sample EURDEP station",
+            "country": "Belgium",
+            "value": 95,
+            "unit": "nSv/h",
+            "observed_at": "2026-05-05T09:00:00Z",
+            "radiation_value_score": 0,
+            "high_radiation_flag": 0,
+            "source_api_endpoint": "https://remap.jrc.ec.europa.eu/",
+            "docs_url": "https://remon.jrc.ec.europa.eu/About/Rad-Data-Exchange"
+        },
+        "ext_id": "BE0001:20260505T090000",
+        "has_geom": true
+    },
+    "globalping_measurements": {
+        "ts": "2026-05-05T09:30:00Z",
+        "props": {
+            "measurement_id": "m_sample",
+            "measurement_type": "ping",
+            "target": "one.one.one.one",
+            "status": "finished",
+            "reachable": true,
+            "resolved_address": "1.1.1.1",
+            "probe_country": "Germany",
+            "probe_city": "Frankfurt",
+            "probe_asn": 3320,
+            "probe_network": "Deutsche Telekom AG",
+            "avg_rtt_ms": 12.4,
+            "packet_loss": 0,
+            "reachability_loss_score": 0,
+            "latency_anomaly_score": 0,
+            "source_api_endpoint": "https://api.globalping.io/v1/measurements"
+        },
+        "ext_id": "m_sample:one.one.one.one:Germany:3320:Frankfurt",
+        "has_geom": true
+    },
+    "lhasa_landslide": {
+        "ts": "2026-05-05T00:00:00Z",
+        "props": {
+            "watch_aoi_id": "zone:south_asia",
+            "watch_aoi_kind": "strategic_zone",
+            "watch_aoi_label": "South Asia",
+            "objectid": 1,
+            "country": "Pakistan",
+            "admin2": "Sample district",
+            "gid_2": "PAK.1.1_1",
+            "l_haz": 1,
+            "m_haz": 1,
+            "h_haz": 0,
+            "landslide_hazard_score": 0.8,
+            "source_api_endpoint": "https://gis.earthdata.nasa.gov/gis05/rest/services/Landslides/LHASA_Exposure/FeatureServer/0/query",
+            "docs_url": "https://gis.earthdata.nasa.gov/gis05/rest/services/Landslides/LHASA_Exposure/FeatureServer/layers"
+        },
+        "ext_id": "south_asia:1",
+        "has_geom": true
+    },
+    "opera_dist_alert": {
+        "ts": "2026-05-01T00:03:45Z",
+        "props": {
+            "watch_aoi_id": "zone:ukraine",
+            "watch_aoi_kind": "strategic_zone",
+            "watch_aoi_label": "Ukraine",
+            "granule_id": "G4175823084-LPCLOUD",
+            "producer_granule_id": "OPERA_L3_DIST-ALERT-HLS_T14XNQ_20260501T000345Z_20260503T021340Z_L8_30_v1",
+            "title": "OPERA_L3_DIST-ALERT-HLS_T14XNQ_20260501T000345Z_20260503T021340Z_L8_30_v1",
+            "short_name": "OPERA_L3_DIST-ALERT-HLS_V1",
+            "time_start": "2026-05-01T00:03:45.808Z",
+            "time_end": "2026-05-01T00:04:09.682Z",
+            "cloud_cover": "1",
+            "online_access_flag": true,
+            "disturbance_product_available_score": 1.1,
+            "sampling_state": "catalog_coverage_only_pending_pixel_sampling",
+            "source_api_endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json"
+        },
+        "ext_id": "zone_ukraine:G4175823084-LPCLOUD",
+        "has_geom": true
+    },
+    "saveecobot_radiation": {
+        "ts": "2026-05-05T10:00:00Z",
+        "props": {
+            "city_slug": "dnipro",
+            "city_id": 1,
+            "city_name": "Dnipro",
+            "region_name": "Dnipropetrovsk oblast",
+            "country": "Ukraine",
+            "value": 105,
+            "gamma_nsv_h": 105,
+            "unit": "nSv/h",
+            "observed_at": "2026-05-05T10:00:00Z",
+            "radiation_value_score": 0,
+            "high_radiation_flag": 0,
+            "source_api_endpoint": "https://www.saveecobot.com/maps/dnipro.json",
+            "docs_url": "https://docs.saveecobot.com/docs/ukraine-radiation-api-ukrainian"
+        },
+        "ext_id": "dnipro:20260505T100000",
+        "has_geom": true
+    },
+    "sentinel_acquisition_plan": {
+        "ts": "2026-05-05T18:09:12Z",
+        "props": {
+            "watch_aoi_id": "zone:mediterranean",
+            "watch_aoi_kind": "strategic_zone",
+            "watch_aoi_label": "Mediterranean",
+            "satellite_id": "S1A",
+            "datatake_id": "81B12",
+            "mode": "IW",
+            "polarisation": "DV",
+            "planned_start": "2026-05-05T18:09:12Z",
+            "planned_end": "2026-05-05T18:15:10Z",
+            "planned_acquisition_over_aoi": true,
+            "planned_acquisition_score": 1.4,
+            "tasking_intent_caution": "planned acquisition confirms SAR coverage opportunity, not tasking intent",
+            "source_api_endpoint": "https://sentinels.copernicus.eu/copernicus/sentinel-1/acquisition-plans"
+        },
+        "ext_id": "mediterranean:S1A:81B12",
+        "has_geom": true
+    },
+    "cems_gfm": {
+        "ts": "2026-04-29T09:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "state": "blocked_token_required",
+            "integration_state": "blocked_token_required",
+            "product": "Copernicus EMS Global Flood Monitoring",
+            "credential_env": "GFM_TOKEN",
+            "source_api_endpoint": "https://api.gfm.eodc.eu/v2/",
+            "docs_url": "https://global-flood.emergency.copernicus.eu/"
+        },
+        "ext_id": "flood_philippines_luzon:2026042909",
+        "has_geom": true
+    },
+    "direct_flood_cap": {
+        "ts": "2026-04-29T08:45:00Z",
+        "props": {
+            "feed_id": "nws_active_flood_alerts",
+            "event": "Flood Warning",
+            "headline": "Flood Warning issued for sample river basin",
+            "severity": "Severe",
+            "sent": "2026-04-29T08:45:00Z",
+            "source_api_endpoint": "https://api.weather.gov/alerts/active?status=actual&severity=Extreme,Severe,Moderate",
+            "integration_state": "direct_national_warning_active"
+        },
+        "ext_id": "urn:oid:sample-flood-warning",
+        "has_geom": true
+    },
+    "gdacs_gfds": {
+        "ts": "2026-04-29T00:00:00Z",
+        "props": {
+            "product": "gfds_signal",
+            "date": "2026-04-29",
+            "product_url": "https://www.gdacs.org/flooddetection/DATA/ALL/SignalTiffs/2026/04/signal_20260429_ALL.tif",
+            "content_length": 12743951,
+            "integration_state": "global_tiff_available",
+            "source_api_endpoint": "https://www.gdacs.org/flooddetection/DATA/ALL/SignalTiffs/2026/04/",
+            "docs_url": "https://www.gdacs.org/flooddetection/download.aspx"
+        },
+        "ext_id": "gfds_signal:20260429",
+        "has_geom": true
+    },
+    "global_precip_monitor": {
+        "ts": "2026-04-29T09:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "cmorph_state": "directory_available",
+            "persiann_state": "directory_available",
+            "precip_pressure_score": 0,
+            "integration_state": "product_directories_registered_pending_raster_sampling",
+            "source_api_endpoint": "https://ftpprd.ncep.noaa.gov/pub/precip/global_CMORPH/daily_025deg/",
+            "persiann_endpoint": "https://persiann.eng.uci.edu/CHRSdata/PDIRNow/PDIRNowdaily/",
+            "docs_url": "https://www.cpc.ncep.noaa.gov/products/janowiak/cmorph_get_data.html"
+        },
+        "ext_id": "flood_philippines_luzon:2026042909",
+        "has_geom": true
+    },
+    "glofas_flood_forecast": {
+        "ts": "2026-04-30T00:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "forecast_days": 7,
+            "forecast_peak_date": "2026-04-30",
+            "forecast_peak_discharge_m3s": 450.5,
+            "forecast_today_discharge_m3s": 120.2,
+            "baseline_mean_discharge_m3s": 100.1,
+            "baseline_median_discharge_m3s": 80.1,
+            "flood_pressure_ratio": 4.5,
+            "flood_pressure_score": 2.6,
+            "state": "strong_flood_pressure",
+            "integration_state": "forecast_sampled",
+            "source_api_endpoint": "https://flood-api.open-meteo.com/v1/flood"
+        },
+        "ext_id": "flood_philippines_luzon:2026-04-29",
+        "has_geom": true
+    },
+    "hydrology_static_context": {
+        "ts": "2026-04-29T00:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "context_kind": "river_surface_water_static_context",
+            "source_family": "JRC Global Surface Water + HydroSHEDS/HydroRIVERS",
+            "recurrence_context": "use as static floodplain/river-network prior and false-positive suppressor",
+            "integration_state": "static_context_registered_pending_local_extract",
+            "source_api_endpoint": "https://global-surface-water.appspot.com/",
+            "hydrosheds_url": "https://www.hydrosheds.org/products/hydrorivers",
+            "docs_url": "https://global-surface-water.appspot.com/download"
+        },
+        "ext_id": "flood_philippines_luzon",
+        "has_geom": true
+    },
+    "imerg_precip": {
+        "ts": "2026-04-29T09:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "product": "GPM IMERG precipitation accumulation",
+            "precip_pressure_score": 0,
+            "state": "publisher_catalog_available_pps_download_auth_required",
+            "integration_state": "publisher_catalog_available_pps_download_auth_required",
+            "source_api_endpoint": "https://pmmpublisher.pps.eosdis.nasa.gov/",
+            "docs_url": "https://gpm.nasa.gov/precip-apps/doc"
+        },
+        "ext_id": "flood_philippines_luzon:2026042909",
+        "has_geom": true
+    },
+    "nasa_lance_flood": {
+        "ts": "2026-04-29T00:00:00Z",
+        "props": {
+            "watch_aoi_id": "flood:philippines_luzon",
+            "watch_aoi_kind": "flood_gap_zone",
+            "watch_aoi_label": "Luzon / Manila Bay flood watch",
+            "product": "MCDWD_L3_F1_NRT",
+            "product_family": "MODIS",
+            "tile": "h30v07",
+            "year": 2026,
+            "day_of_year": 119,
+            "product_url": "https://nrt3.modaps.eosdis.nasa.gov/archive/allData/61/MCDWD_L3_F1_NRT/2026/119/MCDWD_L3_F1_NRT.A2026119.h30v07.061.tif",
+            "viewer_url": "https://go.nasa.gov/globalflood",
+            "integration_state": "catalog_url_ready_download_token_required",
+            "source_api_endpoint": "https://nrt3.modaps.eosdis.nasa.gov/archive/allData/61/MCDWD_L3_F1_NRT",
+            "docs_url": "https://www.earthdata.nasa.gov/data/instruments/viirs/near-real-time-data/nrt-global-flood-products"
+        },
+        "ext_id": "MCDWD_L3_F1_NRT:flood_philippines_luzon:2026119",
+        "has_geom": true
+    },
+    "cems_rapid_mapping": {
+        "ts": "2026-04-28T17:07:10.281181Z",
+        "props": {
+            "code": "EMSR872",
+            "name": "Tropical Cyclone Sinlaku in Micronesia",
+            "category": "Storm",
+            "countries": [
+                "Micronesia"
+            ],
+            "eventTime": "2026-04-08T22:00:00",
+            "activationTime": "2026-04-21T14:34:00",
+            "lastUpdate": "2026-04-28T17:07:10.281181",
+            "closed": false,
+            "gdacsId": "1001141",
+            "n_aois": 19,
+            "n_products": 16,
+            "centroid": "POINT (151.75069008400766 7.375840981096835)",
+            "activation_url": "https://rapidmapping.emergency.copernicus.eu/EMSR872",
+            "source_api_endpoint": "https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations-info/?limit=200&ordering=-lastUpdate"
+        },
+        "ext_id": "EMSR872",
+        "has_geom": true
+    },
+    "emsc_seismic": {
+        "ts": "2026-04-28T21:47:15.539390Z",
+        "props": {
+            "unid": "20260428_0000406",
+            "id": "20260428_0000406",
+            "source_id": "1986386",
+            "source_catalog": "EMSC-RTS",
+            "lastupdate": "2026-04-28T21:53:17.018486Z",
+            "time": "2026-04-28T21:47:15.53939Z",
+            "flynn_region": "SWITZERLAND",
+            "lat": 47.1071,
+            "lon": 9.4046,
+            "depth": -1.8,
+            "evtype": "ke",
+            "auth": "ETHZ",
+            "mag": 1.2,
+            "magtype": "ml",
+            "source_api_endpoint": "https://www.seismicportal.eu/fdsnws/event/1/query?format=json&limit=500&orderby=time"
+        },
+        "ext_id": "20260428_0000406",
+        "has_geom": true
+    },
+    "black_marble_nightlights": {
+        "ts": "2026-04-26T00:00:00Z",
+        "props": {
+            "state": "no_significant_change",
+            "h3_res": 4,
+            "h3_cell": "842d811ffffffff",
+            "layer_id": "VIIRS_SNPP_GapFilled_BRDF_Corrected_DayNightBand_Radiance",
+            "anomaly_z": -0.78,
+            "delta_pct": -37.09,
+            "computed_at": "2026-04-28T00:49:31Z",
+            "source_kind": "processed_black_marble_cell",
+            "state_label": "NO SIGNIFICANT CHANGE",
+            "current_date": "2026-04-26",
+            "display_name": "NASA Black Marble night-light anomaly",
+            "blackout_score": 0.68,
+            "recovery_score": 0,
+            "quality_blocked": false,
+            "source_api_endpoint": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/VIIRS_SNPP_GapFilled_BRDF_Corrected_DayNightBand_Radiance"
+        },
+        "ext_id": "842d811ffffffff:2026-04-26",
+        "has_geom": true
+    },
+    "rf_presence": {
+        "ts": "2026-04-28T22:06:00Z",
+        "props": {
+            "feed": "wspr.live",
+            "role": "transmitter",
+            "bands": 5,
+            "spots": 364,
+            "bucket": "2026-04-28 22:00:00",
+            "avg_snr": -15.55,
+            "network": "wsprnet",
+            "last_seen": "2026-04-28T22:06:00Z",
+            "receivers": 187,
+            "first_seen": "2026-04-28T22:00:00Z",
+            "transmitters": 3,
+            "window_minutes": 30,
+            "spot_density_score": 1.97,
+            "source_api_endpoint": "https://db1.wspr.live/"
+        },
+        "ext_id": "wspr_transmitter_26.5_-81.0_20260428T2206",
+        "has_geom": true
+    },
+    "tropomi_no2": {
+        "ts": "2026-04-26T00:00:00Z",
+        "props": {
+            "gas": "NO2",
+            "band": "NO2",
+            "unit": "mol/m^2",
+            "state": "no_significant_change",
+            "h3_res": 4,
+            "min_qa": 75,
+            "h3_cell": "843d129ffffffff",
+            "anomaly_z": 0.01,
+            "anomaly_score": 0.01,
+            "current_mean": 0.000055867612218207816,
+            "baseline_days": 26,
+            "current_interval_from": "2026-04-26T00:00:00Z",
+            "current_interval_to": "2026-04-27T00:00:00Z",
+            "source_kind": "tropomi_processed_cell",
+            "source_api_endpoint": "https://sh.dataspace.copernicus.eu/api/v1/statistics"
+        },
+        "ext_id": "843d129ffffffff:2026-04-26",
+        "has_geom": true
+    },
+    "tropomi_so2": {
+        "ts": "2026-04-26T00:00:00Z",
+        "props": {
+            "gas": "SO2",
+            "band": "SO2",
+            "unit": "mol/m^2",
+            "state": "strong_change",
+            "h3_res": 4,
+            "min_qa": 50,
+            "h3_cell": "841f049ffffffff",
+            "anomaly_z": 3.74,
+            "anomaly_score": 3,
+            "current_mean": 0.000697125810210497,
+            "baseline_days": 25,
+            "current_interval_from": "2026-04-26T00:00:00Z",
+            "current_interval_to": "2026-04-27T00:00:00Z",
+            "source_kind": "tropomi_processed_cell",
+            "source_api_endpoint": "https://sh.dataspace.copernicus.eu/api/v1/statistics"
+        },
+        "ext_id": "841f049ffffffff:2026-04-26",
+        "has_geom": true
+    },
+    "wmo_cap_alert_areas": {
+        "ts": "2026-04-28T21:37:32Z",
+        "props": {
+            "identifier": "IN-1777410481148017_45",
+            "id": "IN-1777410481148017_45",
+            "event": "Thunder shower with strong wind",
+            "headline": "Light to moderate Thunderstorm",
+            "sent": "2026-04-28 21:37:32",
+            "effective": "2026-04-28 21:35:00",
+            "expires": "2026-04-29 00:35:00",
+            "areaDesc": "Bankura districts",
+            "severity": "Severe",
+            "urgency": "Future",
+            "certainty": "Likely",
+            "member_id": "066",
+            "member_country": "India",
+            "member_code": "IND",
+            "wmo_region": "2",
+            "cap_url": "https://severeweather.wmo.int/v2/cap-alerts/in-ndma-xx/2026/04/28/21/37/32-e2755ec65901173e388622366bfe65e6.xml",
+            "geometry_source": "member_centroid",
+            "source_api_endpoint": "https://severeweather.wmo.int/json/wmo_all.json"
+        },
+        "ext_id": "IN-1777410481148017_45:0:0",
+        "has_geom": true
+    },
+    "nhc_gis_cones": {
+        "ts": "2026-06-01T12:00:00Z",
+        "props": {
+            "storm_id": "AL012026",
+            "storm_name": "TEST",
+            "binNumber": "001",
+            "classification": "HU",
+            "intensity": "80",
+            "pressure": "980",
+            "lastUpdate": "2026-06-01T12:00:00Z",
+            "advisoryUrl": "https://www.nhc.noaa.gov/text/MIATCPAT1.shtml",
+            "product_type": "forecast_cone",
+            "product_url": "https://www.nhc.noaa.gov/storm_graphics/api/AL012026_CONE_latest.kmz",
+            "placemark_name": "Forecast Cone",
+            "source_api_endpoint": "https://www.nhc.noaa.gov/CurrentStorms.json"
+        },
+        "ext_id": "AL012026:001:0:0",
+        "has_geom": true
+    },
+    "swdi_radar_signatures": {
+        "ts": "2026-04-27T00:00:52Z",
+        "props": {
+            "dataset": "nx3tvs",
+            "ztime": "2026-04-27T00:00:52Z",
+            "wsr_id": "KVNX",
+            "cell_id": "K1",
+            "cell_type": "TVS",
+            "range": 62,
+            "azimuth": 88,
+            "max_shear": 16,
+            "mxdv": 63,
+            "lat": 36.77,
+            "lon": -96.842,
+            "source_api_endpoint": "https://www.ncdc.noaa.gov/swdiws/csv/nx3tvs/20260427:20260428?limit=1000"
+        },
+        "ext_id": "nx3tvs:2026-04-27T00:00:52Z:KVNX:K1",
+        "has_geom": true
+    },
+    "noaa_nwm": {
+        "ts": "2026-04-28T20:00:00Z",
+        "props": {
+            "product": "short_range_channel_rt_f001",
+            "domain": "conus",
+            "cycle": "2026042820",
+            "cycle_time": "2026-04-28T20:00:00Z",
+            "path": "short_range",
+            "product_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/prod/nwm.20260428/short_range/nwm.t20z.short_range.channel_rt.f001.conus.nc",
+            "content_length": 123456,
+            "last_modified": "Tue, 28 Apr 2026 20:10:00 GMT",
+            "integration_state": "product_available",
+            "hydrology_analysis": "pending_netcdf_sampling",
+            "source_api_endpoint": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/prod",
+            "docs_url": "https://www.nco.ncep.noaa.gov/pmb/products/nwm/"
+        },
+        "ext_id": "short_range_channel_rt_f001:conus:2026042820",
+        "has_geom": true
+    },
+    "wmo_alert_hub": {
+        "ts": "2026-04-28T21:37:32Z",
+        "props": {
+            "id": "IN-1777410481148017_45",
+            "event": "Thunder shower with strong wind",
+            "headline": "Light to moderate Thunderstorm",
+            "sent": "2026-04-28 21:37:32",
+            "effective": "2026-04-28 21:35:00",
+            "expires": "2026-04-29 00:35:00",
+            "areaDesc": "Bankura districts",
+            "severity_code": 2,
+            "urgency_code": 3,
+            "certainty_code": 2,
+            "severity": "Severe",
+            "urgency": "Future",
+            "certainty": "Likely",
+            "member_id": "066",
+            "member_country": "India",
+            "member_code": "IND",
+            "member_department": "India Meteorological Department",
+            "wmo_region": "2",
+            "cap_url": "https://severeweather.wmo.int/v2/cap-alerts/in-ndma-xx/2026/04/28/21/37/32-e2755ec65901173e388622366bfe65e6.xml",
+            "source_api_endpoint": "https://severeweather.wmo.int/json/wmo_all.json",
+            "lastUpdated": "2026-04-28 21:16:07"
+        },
+        "ext_id": "IN-1777410481148017_45",
+        "has_geom": true
+    },
+    "vaac_tokyo": {
+        "ts": "2026-04-28T21:00:00Z",
+        "props": {
+            "volcano": "MAYON",
+            "volcano_id": "273030",
+            "vaac": "TOKYO",
+            "area": "PHILIPPINES",
+            "dtg": "20260428/2100Z",
+            "advisory_nr": "2026/539",
+            "eruption_details": "ERUPTION AT 20260428/2039Z VA CLD UNKNOWN REPORTED",
+            "obs_va_dtg": "28/2040Z",
+            "obs_va_cld": "VA NOT IDENTIFIABLE FM SATELLITE DATA WIND FL180 090/10KT",
+            "fcst_va_cld_6_hr": "",
+            "fcst_va_cld_12_hr": "",
+            "fcst_va_cld_18_hr": "",
+            "info_source": "HIMAWARI-9 PHIVOLCS",
+            "source_elev": "2462M AMSL",
+            "remarks": "",
+            "next_advisory": "NO FURTHER ADVISORIES",
+            "raw_text": "DTG: 20260428/2100Z\nVAAC: TOKYO\nVOLCANO: MAYON 273030\nPSN: N1315 E12341",
+            "advisory_url": "https://ds.data.jma.go.jp/svd/vaac/data/TextData/2026/20260428_27303000_0539_Text.html",
+            "source_api_endpoint": "https://ds.data.jma.go.jp/svd/vaac/data/index.html"
+        },
+        "ext_id": "2026/539:MAYON:20260428/2100Z",
+        "has_geom": true
+    },
+    "vaac_washington": {
+        "ts": "2026-04-28T20:53:00Z",
+        "props": {
+            "volcano": "FUEGO",
+            "volcano_id": "342090",
+            "vaac": "WASHINGTON",
+            "state_or_region": "GUATEMALA",
+            "issue_time": "2026-04-28T20:53:00Z",
+            "advisory_nr": "2026/497",
+            "eruption_date": "2026-04-28T20:53:00Z",
+            "eruption_details": "INTMT VA EMS",
+            "information_source": "GOES-19. NWP MODELS.",
+            "summit_elevation_ft": "12346",
+            "obs_status": "IDENTIFIABLE",
+            "obs_is_estimated": "true",
+            "obs_time": "2026-04-28T20:20:00Z",
+            "upper_limit_fl": "140",
+            "lower_limit": "GND",
+            "direction_deg": "225",
+            "speed_kt": "15",
+            "ash_polygon_wkt": "POLYGON((-90.884000 14.467000,-91.250000 14.350000,-91.217000 14.267000,-90.867000 14.467000,-90.884000 14.467000))",
+            "remarks": "LGT VA EMS PREV OBS IN STLT IMG EXT APRX 20NM SW FM SUMMIT.",
+            "next_advisory": "2026-04-29T03:00:00Z",
+            "bulletin_identifier": "A_LUXX20KNES282053_C_KNES_20260428205414.xml",
+            "advisory_url": "https://www.ospo.noaa.gov/products/atmosphere/vaac/volcanoes/xml_files/FVXX20_20260428_2053.xml",
+            "source_api_endpoint": "https://www.ospo.noaa.gov/products/atmosphere/vaac/messages.html"
+        },
+        "ext_id": "A_LUXX20KNES282053_C_KNES_20260428205414.xml",
+        "has_geom": true
+    },
+    "spc_storm_reports": {
+        "ts": "2026-04-28T14:15:00Z",
+        "props": {
+            "type": "wind",
+            "time": "1415",
+            "magnitude": "UNK",
+            "location": "2 N Saint Jo",
+            "county": "Montague",
+            "state": "TX",
+            "lat": 33.72,
+            "lon": -97.52,
+            "comments": "Multiple trees and power lines down just north of Saint Jo... and roadways had to be cleared. (FWD)",
+            "day": "today",
+            "source_api_endpoint": "https://www.spc.noaa.gov/climo/reports/today_filtered.csv"
+        },
+        "ext_id": "20260428:wind:1415:TX:fixture",
+        "has_geom": true
+    },
+    "hms_smoke": {
+        "ts": "2026-04-28T15:00:00Z",
+        "props": {
+            "density": "Light",
+            "start_time": "2026118 1200UTC",
+            "end_time": "2026118 1500UTC",
+            "satellite": "GOES-WEST",
+            "analysis_date": "2026-04-28",
+            "document_name": "HMS Smoke Mapping-20260428",
+            "style_url": "#Smoke_Light_style",
+            "source_api_endpoint": "https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Smoke_Polygons/KML/2026/04/hms_smoke20260428.kml"
+        },
+        "ext_id": "20260428:light:fixture",
+        "has_geom": true
+    },
+    "usgs_shakemap": {
+        "ts": "2026-04-20T07:53:00.185000Z",
+        "props": {
+            "event_id": "us6000sri7",
+            "title": "M 7.4 - 100 km ENE of Miyako, Japan",
+            "place": "100 km ENE of Miyako, Japan",
+            "mag": 7.4,
+            "depth_km": 35,
+            "alert": "green",
+            "has_shakemap": true,
+            "has_pager": true,
+            "usgs_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000sri7",
+            "detail_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000sri7.geojson",
+            "shakemap_maxmmi": 5.993,
+            "shakemap_maxpga_grid": 0.403,
+            "pager_alertlevel": "green",
+            "pager_onepager_url": "https://earthquake.usgs.gov/example/onepager.pdf"
+        },
+        "ext_id": "us6000sri7",
+        "has_geom": true
+    },
+    "noaa_tsunami": {
+        "ts": "2026-04-25T08:08:42.000000Z",
+        "props": {
+            "id": "urn:uuid:082144b1-5213-4f5e-b038-217950163ee1",
+            "title": "65 miles SE of Dutch Harbor, Alaska",
+            "category": "Information",
+            "magnitude": "5.1(Ml)",
+            "affected_region": "65 miles SE of Dutch Harbor, Alaska",
+            "note": "* There is NO tsunami danger from this earthquake.",
+            "center": "NTWC",
+            "feed_title": "Tsunami Information Statement Number 1",
+            "feed_url": "https://www.tsunami.gov/events/xml/PAAQAtom.xml",
+            "updated": "2026-04-25T08:08:42Z",
+            "bulletin_url": "https://www.tsunami.gov/events/PAAQ/2026/04/25/te1ihx/1/WEAK53/WEAK53.txt",
+            "cap_url": "https://www.tsunami.gov/events/PAAQ/2026/04/25/te1ihx/1/WEAK53/PAAQCAP.xml"
+        },
+        "ext_id": "urn:uuid:082144b1-5213-4f5e-b038-217950163ee1",
+        "has_geom": true
+    },
+    "volcano_notices": {
+        "ts": "2026-04-28T20:00:04.000000Z",
+        "props": {
+            "notice_identifier": "DOI-USGS-AVO-2026-04-28T19:07:33+00:00",
+            "notice_title": "ALASKA VOLCANO OBSERVATORY DAILY UPDATE",
+            "notice_type": "Daily Update",
+            "notice_url": "https://volcanoes.usgs.gov/hans-public/notice/DOI-USGS-AVO-2026-04-28T19:07:33+00:00",
+            "observatory": "Alaska Volcano Observatory",
+            "volcano_name": "Great Sitkin",
+            "vnum": "311120",
+            "alert_level": "WATCH",
+            "color_code": "ORANGE",
+            "summary": "Slow lava effusion continues within the Great Sitkin summit crater."
+        },
+        "ext_id": "DOI-USGS-AVO-2026-04-28T19:07:33+00:00:311120",
+        "has_geom": true
+    },
+    "nifc_fire_perimeters": {
+        "ts": "2026-04-17T20:37:03.700000Z",
+        "props": {
+            "GlobalID": "ce65c95e-b68a-4623-9594-83f165dc6933",
+            "poly_IncidentName": "Honey Butter 131",
+            "poly_GISAcres": 15.58848291544115,
+            "poly_IRWINID": "{EE69697A-D7AF-4B39-A4FB-FD846EC6E804}",
+            "poly_DateCurrent": 1776458223700,
+            "poly_PolygonDateTime": 1769899129000,
+            "poly_IsVisible": "Yes",
+            "attr_PercentContained": null,
+            "attr_POOState": "US-FL",
+            "source_api_endpoint": "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters_Current/FeatureServer/0/query"
+        },
+        "ext_id": "ce65c95e-b68a-4623-9594-83f165dc6933",
+        "has_geom": true
+    },
+    "tle": {
+        "ts": "2026-04-29T03:09:59.626368Z",
+        "props": {
+            "name": "CXO",
+            "group": "science",
+            "line1": "1 25867U 99040B   26119.13194012  .00000562  00000+0  00000+0 0  9991",
+            "line2": "2 25867  55.4178 118.0274 7914890 310.5929   0.1646  0.37810555 17133"
+        },
+        "ext_id": "25867",
+        "has_geom": true
+    },
+    "ioda": {
+        "ts": "2026-04-27T12:40:00.000000Z",
+        "props": {
+            "country": "CN",
+            "entity_name": "China",
+            "outage_score": 2.468175537811079,
+            "bgp_drop_ratio": 0.000007291280266787945,
+            "latest_gtr_norm": 0.6382068576628499,
+            "material_reason": "low Google transparency normalized traffic",
+            "window_end_unix": 1777294578,
+            "latest_ping_loss": 35.73,
+            "window_start_unix": 1777272978,
+            "latest_probe_count": 510054,
+            "source_api_endpoint": "api.ioda.inetintel.cc.gatech.edu/v2/signals/raw/country"
+        },
+        "ext_id": "CN_202604271240",
+        "has_geom": true
+    },
+    "tor_metrics": {
+        "ts": "2026-04-25T00:00:00.000000Z",
+        "props": {
+            "country": "IR",
+            "latest_date": "2026-04-25",
+            "direct_users": 400,
+            "direct_prev7_avg": 1000,
+            "direct_drop_ratio": 0.6,
+            "bridge_users": 250,
+            "bridge_prev7_avg": 100,
+            "bridge_surge_ratio": 2.5,
+            "direct_connecting_drop_score": 1.4,
+            "bridge_demand_surge_score": 2,
+            "censorship_pressure_score": 2.3,
+            "actor_scope": "country_network",
+            "actor_country": "IR",
+            "actor_network_control": "state_controlled",
+            "actor_country_network_control_score": 2,
+            "source_api_endpoint": "https://metrics.torproject.org/"
+        },
+        "ext_id": "IR_20260425",
+        "has_geom": true
+    },
+    "jtwc": {
+        "ts": "2026-04-27T06:00:00.000000Z",
+        "props": {
+            "cy": "91",
+            "id": "WP912026",
+            "file": "bwp912026.dat",
+            "name": "INVEST",
+            "tech": "BEST",
+            "basin": "WP",
+            "season": 2026,
+            "mslp_mb": 1005,
+            "vmax_kt": 15,
+            "warn_time": "2026-04-27T06:00:00Z",
+            "storm_type": "DB"
+        },
+        "ext_id": "WP912026:2026042706",
+        "has_geom": true
+    },
+    "ooni": {
+        "ts": "2026-04-27T12:56:18.809756Z",
+        "props": {
+            "country": "BD",
+            "ok_count": 0,
+            "confirmed": false,
+            "test_name": "dnscheck",
+            "window_end": "2026-04-27",
+            "window_start": "2026-04-26",
+            "anomaly_count": 0,
+            "anomaly_ratio": 0,
+            "failure_count": 386,
+            "failure_ratio": 1,
+            "blocking_score": 0.5,
+            "confirmed_count": 0,
+            "measurement_count": 386
+        },
+        "ext_id": "BD_dnscheck_2026042712",
+        "has_geom": true
+    },
+    "acled": {
+        "ts": "2026-04-17T00:00:00.000000Z",
+        "props": {
+            "iso": 32,
+            "tags": "crowd size=no report",
+            "year": 2026,
+            "notes": "On 17 April 2026, near Bialet Masse (Cordoba), victims of a false rape accusation marched during the day from La Falda to Bialet Masse to make their case visible and demand justice. Two days earlier, they had started their march from Capilla del Monte (coded separately).",
+            "actor1": "Protesters (Argentina)",
+            "actor2": "",
+            "admin1": "Cordoba",
+            "admin2": "Punilla",
+            "admin3": "",
+            "inter1": "Protesters",
+            "inter2": "",
+            "region": "South America",
+            "source": "El Diario de Carlos Paz; Instagram",
+            "country": "Argentina",
+            "latitude": "-31.3138",
+            "location": "Bialet Masse",
+            "longitude": "-64.4640",
+            "timestamp": 1776720126,
+            "event_date": "2026-04-17",
+            "event_type": "Protests",
+            "fatalities": 0,
+            "interaction": "Protesters only",
+            "source_scale": "New media-Subnational",
+            "assoc_actor_1": "",
+            "assoc_actor_2": "",
+            "disorder_type": "Demonstrations",
+            "event_id_cnty": "ARG18321",
+            "geo_precision": 2,
+            "sub_event_type": "Peaceful protest",
+            "time_precision": "1",
+            "civilian_targeting": ""
+        },
+        "ext_id": "ARG18321",
+        "has_geom": true
+    },
+    "eonet": {
+        "ts": "2026-04-23T14:23:00.000000Z",
+        "props": {
+            "id": "EONET_19840",
+            "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_19840",
+            "title": "rx-66 Prescribed Fire, Burnett, Wisconsin",
+            "closed": null,
+            "sources": [
+                {
+                    "id": "IRWIN",
+                    "url": "https://irwin.doi.gov/observer/incidents/58be4c5c-51cd-4eed-b8c7-795a983a2f92"
+                }
+            ],
+            "geometry": [
+                {
+                    "date": "2026-04-23T14:23:00Z",
+                    "type": "Point",
+                    "coordinates": [
+                        -92.6535178,
+                        45.8508587
+                    ],
+                    "magnitudeUnit": "acres",
+                    "magnitudeValue": 1490.3
+                }
+            ],
+            "categories": [
+                {
+                    "id": "wildfires",
+                    "title": "Wildfires"
+                }
+            ],
+            "description": null
+        },
+        "ext_id": "EONET_19840",
+        "has_geom": true
+    },
+    "firms": {
+        "ts": "2026-04-27T11:00:00.000000Z",
+        "props": {
+            "frp": "5.21",
+            "scan": "0.43",
+            "track": "0.62",
+            "version": "2.0NRT",
+            "acq_date": "2026-04-27",
+            "acq_time": "1100",
+            "daynight": "D",
+            "latitude": "40.53816",
+            "longitude": "17.36427",
+            "satellite": "N",
+            "bright_ti4": "337.76",
+            "bright_ti5": "298.98",
+            "confidence": "nominal"
+        },
+        "ext_id": "2026-04-27 1100_40.53816_17.36427",
+        "has_geom": true
+    },
+    "gdacs": {
+        "ts": "2026-04-27T08:17:21.000000Z",
+        "props": {
+            "url": {
+                "report": "https://www.gdacs.org/report.aspx?eventid=1537700&episodeid=1702515&eventtype=EQ",
+                "details": "https://www.gdacs.org/gdacsapi/api/events/geteventdata?eventtype=EQ&eventid=1537700",
+                "geometry": "https://www.gdacs.org/gdacsapi/api/polygons/getgeometry?eventtype=EQ&eventid=1537700&episodeid=1702515"
+            },
+            "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/EQ.png",
+            "iso3": "IDN",
+            "name": "Earthquake in Indonesia",
+            "Class": "Point_Centroid",
+            "glide": "",
+            "source": "NEIC",
+            "todate": "2026-04-27T08:17:21",
+            "country": "Indonesia",
+            "eventid": 1537700,
+            "fromdate": "2026-04-27T08:17:21",
+            "sourceid": "",
+            "episodeid": 1702515,
+            "eventname": "",
+            "eventtype": "EQ",
+            "iscurrent": "true",
+            "alertlevel": "Green",
+            "alertscore": 1,
+            "description": "Earthquake in Indonesia",
+            "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/EQ.png",
+            "istemporary": "false",
+            "datemodified": "2026-04-27T08:57:22",
+            "polygonlabel": "Centroid",
+            "severitydata": {
+                "severity": 4.6,
+                "severitytext": "Magnitude 4.6M, Depth:135.571km",
+                "severityunit": "M"
+            },
+            "htmldescription": "Green M 4.6 Earthquake in Indonesia at: 27 Apr 2026 08:17:21.",
+            "affectedcountries": [
+                {
+                    "iso2": "ID",
+                    "iso3": "IDN",
+                    "countryname": "Indonesia"
+                }
+            ],
+            "episodealertlevel": "Green",
+            "episodealertscore": 0
+        },
+        "ext_id": "1537700",
+        "has_geom": true
+    },
+    "gdelt": {
+        "ts": "2026-04-27T13:00:00.000000Z",
+        "props": {
+            "country": "SF",
+            "avg_tone": 0,
+            "sql_date": "20250427",
+            "goldstein": 2.8,
+            "date_added": "20260427130000",
+            "event_code": "043",
+            "quad_class": "1",
+            "source_url": "https://www.biznews.com/interviews/stellies-student-who-built-edtech-taptic-took-on-sassa-fraud",
+            "actor1_name": "",
+            "actor2_name": "STUDENT",
+            "num_mentions": 5,
+            "event_base_code": "043",
+            "event_root_code": "04",
+            "global_event_id": "1301225486",
+            "actiongeo_fullname": "Fourways, Gauteng, South Africa"
+        },
+        "ext_id": "1301225486",
+        "has_geom": true
+    },
+    "bluesky": {
+        "ts": "2026-04-27T13:11:05.784240Z",
+        "props": {
+            "did": "did:plc:xhrtfphu4gzqrztkpb3a63qf",
+            "url": "https://bsky.app/profile/did:plc:xhrtfphu4gzqrztkpb3a63qf/post/3mki5gi43d223",
+            "lang": [
+                "en"
+            ],
+            "rkey": "3mki5gi43d223",
+            "text": "[3/5] next steps, including whether to resume a previously suspended U.S. bombing campaign against Iran -- a ceasefire the president extended last week. Trump has been publicly hesitant to restart the conflict. Trump said he canceled the trip because Iran failed to come up with a",
+            "keywords": [
+                "ceasefire"
+            ]
+        },
+        "ext_id": "did:plc:xhrtfphu4gzqrztkpb3a63qf/3mki5gi43d223",
+        "has_geom": true
+    },
+    "flights": {
+        "ts": "2026-04-27T13:08:11.000000Z",
+        "props": {
+            "alt": 10203.18,
+            "icao24": "008080",
+            "country": "South Africa",
+            "callsign": "LNK874V",
+            "geo_alt_m": 10789.92,
+            "on_ground": false,
+            "baro_alt_m": 10203.18,
+            "heading_deg": 252.43,
+            "velocity_m_s": 204.51,
+            "time_position": 1777295291,
+            "vertical_rate": -5.2,
+            "source_provider": "opensky"
+        },
+        "ext_id": "008080",
+        "has_geom": true
+    },
+    "ibtracs": {
+        "ts": "2026-04-20T00:00:00.000000Z",
+        "props": {
+            "sid": "2026099N09152",
+            "name": "SINLAKU",
+            "basin": "WP",
+            "agency": "",
+            "nature": "NR",
+            "season": "2026",
+            "pres_mb": 986,
+            "wind_kt": 51,
+            "iso_time": "2026-04-20T00:00:00Z",
+            "subbasin": "MM"
+        },
+        "ext_id": "2026099N09152:20260420T0000",
+        "has_geom": true
+    },
+    "satnogs": {
+        "ts": "2026-04-27T12:50:50.000000Z",
+        "props": {
+            "end": "2026-04-27T12:53:50Z",
+            "mode": "BPSK",
+            "start": "2026-04-27T12:50:50Z",
+            "status": "unknown",
+            "tle_source": "Space-Track.org",
+            "set_azimuth": 198,
+            "transmitter": "Telemetry",
+            "max_altitude": 83,
+            "norad_cat_id": 43441,
+            "rise_azimuth": 8,
+            "station_name": "VA3HEV",
+            "vetted_status": "unknown",
+            "ground_station": 4690,
+            "observation_id": 13925622,
+            "satellite_name": "0 ZHUHAI-1 OHS-02",
+            "waterfall_status": "unknown",
+            "observation_frequency": 2253599170
+        },
+        "ext_id": "13925622",
+        "has_geom": true
+    },
+    "seismic": {
+        "ts": "2026-04-27T13:00:07.805000Z",
+        "props": {
+            "tz": null,
+            "cdi": null,
+            "gap": 246,
+            "ids": ",aka2026ifycjb,",
+            "mag": 0.7,
+            "mmi": null,
+            "net": "ak",
+            "nst": 6,
+            "rms": 0.4,
+            "sig": 8,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/aka2026ifycjb",
+            "code": "a2026ifycjb",
+            "dmin": 0.1,
+            "felt": null,
+            "time": 1777294807805,
+            "type": "earthquake",
+            "alert": null,
+            "place": "74 km WNW of Beluga, Alaska",
+            "title": "M 0.7 - 74 km WNW of Beluga, Alaska",
+            "types": ",origin,phase-data,",
+            "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/aka2026ifycjb.geojson",
+            "status": "automatic",
+            "magType": "ml",
+            "sources": ",ak,",
+            "tsunami": 0,
+            "updated": 1777295029881,
+            "depth_km": 5
+        },
+        "ext_id": "aka2026ifycjb",
+        "has_geom": true
+    },
+    "cisa_kev": {
+        "ts": "2026-04-24T00:00:00.000000Z",
+        "props": {
+            "cve": "CVE-2024-57726",
+            "cwes": [
+                "CWE-862"
+            ],
+            "name": "SimpleHelp Missing Authorization Vulnerability",
+            "vendor": "SimpleHelp ",
+            "product": "SimpleHelp",
+            "due_date": "2026-05-08",
+            "required": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "epss_date": "2026-04-26",
+            "date_added": "2026-04-24",
+            "epss_score": 0.52255,
+            "nvd_status": "Analyzed",
+            "ransomware": "Unknown",
+            "description": "SimpleHelp contains a missing authorization vulnerability that could allow low-privileged technicians to create API keys with excessive permissions. These API keys can be used to escalate privileges to the server admin role.",
+            "cvss31_score": 9.9,
+            "cvss31_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "nvd_published": "2025-01-15T23:15:09.520",
+            "nvd_references": [
+                "https://simple-help.com/kb---security-vulnerabilities-01-2025#security-vulnerabilities-in-simplehelp-5-5-7-and-earlier",
+                "https://www.horizon3.ai/attack-research/disclosures/critical-vulnerabilities-in-simplehelp-remote-support-software/",
+                "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-57726",
+                "https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/",
+                "https://www.trendmicro.com/vinfo/us/security/news/ransomware-spotlight/ransomware-spotlight-dragonforce"
+            ],
+            "nvd_weaknesses": [
+                "CWE-862"
+            ],
+            "cvss31_severity": "CRITICAL",
+            "epss_percentile": 0.97931,
+            "nvd_description": "SimpleHelp remote support software v5.5.7 and before has a vulnerability that allows low-privileges technicians to create API keys with excessive permissions. These API keys can be used to escalate privileges to the server admin role.",
+            "nvd_last_modified": "2026-04-24T19:26:52.160"
+        },
+        "ext_id": "CVE-2024-57726",
+        "has_geom": true
+    },
+    "launches": {
+        "ts": "2026-06-30T00:00:00.000000Z",
+        "props": {
+            "id": "04154b70-045b-4e3a-bb5a-e5436091ba37",
+            "net": "2026-06-30T00:00:00Z",
+            "pad": {
+                "id": 210,
+                "url": "https://ll.thespacedevs.com/2.2.0/pad/210/?format=json",
+                "name": "Unknown Pad",
+                "map_url": null,
+                "info_url": null,
+                "latitude": "-39.260881",
+                "location": {
+                    "id": 10,
+                    "url": "https://ll.thespacedevs.com/2.2.0/location/10/?format=json",
+                    "name": "Rocket Lab Launch Complex 1, Mahia Peninsula, New Zealand",
+                    "map_image": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/location_10_20200803142509.jpg",
+                    "description": "Rocket Lab Launch Complex 1 is a commercial spaceport located close to Ahuriri Point at the southern tip of Māhia Peninsula, on the east coast of New Zealand's North Island. It is owned and operated by private spaceflight company Rocket Lab and supports launches of the company's Electron rocket for small satellites. With the launch of Electron on 25 May 2017, it became the first private spaceport to host an orbital launch attempt, and the first site in New Zealand to host an orbital launch attempt. With the Electron launch of 21 January 2018, it became the first private spaceport to host a successful orbital launch.",
+                    "country_code": "NZL",
+                    "timezone_name": "Pacific/Auckland",
+                    "total_launch_count": 75,
+                    "total_landing_count": 17
+                },
+                "wiki_url": null,
+                "agency_id": null,
+                "longitude": "177.865826",
+                "map_image": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_210_20230819165718.jpg",
+                "description": null,
+                "country_code": "NZL",
+                "total_launch_count": 0,
+                "orbital_launch_attempt_count": 0
+            },
+            "url": "https://ll.thespacedevs.com/2.2.0/launch/04154b70-045b-4e3a-bb5a-e5436091ba37/?format=json",
+            "name": "Electron | VICTUS HAZE Puma",
+            "slug": "electron-victus-haze-puma",
+            "type": "normal",
+            "image": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
+            "rocket": {
+                "id": 8384,
+                "configuration": {
+                    "id": 26,
+                    "url": "https://ll.thespacedevs.com/2.2.0/config/launcher/26/?format=json",
+                    "name": "Electron",
+                    "family": "",
+                    "variant": "",
+                    "full_name": "Electron"
+                }
+            },
+            "status": {
+                "id": 2,
+                "name": "To Be Determined",
+                "abbrev": "TBD",
+                "description": "Current date is a placeholder or rough estimation based on unreliable or interpreted sources."
+            },
+            "hashtag": null,
+            "mission": {
+                "id": 6965,
+                "name": "VICTUS HAZE Puma",
+                "type": "Government/Top Secret",
+                "orbit": {
+                    "id": 8,
+                    "name": "Low Earth Orbit",
+                    "abbrev": "LEO"
+                },
+                "agencies": [
+                ],
+                "vid_urls": [
+                ],
+                "info_urls": [
+                ],
+                "description": "VICTUS HAZE will see Rocket Lab design, build, launch, and operate a rendezvous proximity operation (RPO) capable spacecraft. U.S. Space Force Space Systems Command (SSC)’s Space Safari’s VICTUS HAZE mission will be an exercise of a realistic threat-response scenario and on-orbit space domain awareness (SDA) demonstration. Once the spacecraft build is complete, Rocket Lab will be entered into a Hot Standby Phase awaiting further direction. Once the exercise begins, Rocket Lab will be given notice to launch the spacecraft into a target orbit. After reaching orbit, the spacecraft will be rapidly commissioned and readied for operations. Rocket Lab will configure a Pioneer class spacecraft bus to meet the unique requirements of the VICTUS HAZE mission.\r\n\r\nThe mission will improve Tactically Responsive Space (TacRS) processes and timelines, demonstrating the ability to respond to on-orbit threats on very short timelines and validating techniques for space domain awareness (SDA) and on-orbit characterization. Rocket Lab’s constellation-class production capability and discriminating technical capabilities in the areas of in-space propulsion, precision attitude control, low latency communications, and autonomous operations are key enablers for this mission.",
+                "launch_designator": null
+            },
+            "program": [
+            ],
+            "failreason": "",
+            "holdreason": "",
+            "window_end": "2026-06-30T00:00:00Z",
+            "infographic": null,
+            "probability": null,
+            "last_updated": "2026-01-28T18:55:37Z",
+            "webcast_live": false,
+            "window_start": "2026-06-30T00:00:00Z",
+            "net_precision": {
+                "id": 12,
+                "name": "Year Half 1",
+                "abbrev": "H1",
+                "description": "The T-0 is expected in the first half of the given year."
+            },
+            "weather_concerns": null,
+            "launch_service_provider": {
+                "id": 147,
+                "url": "https://ll.thespacedevs.com/2.2.0/agencies/147/?format=json",
+                "name": "Rocket Lab",
+                "type": "Commercial"
+            },
+            "pad_launch_attempt_count": 4,
+            "agency_launch_attempt_count": 91,
+            "orbital_launch_attempt_count": 7319,
+            "location_launch_attempt_count": 79,
+            "pad_launch_attempt_count_year": 4,
+            "agency_launch_attempt_count_year": 12,
+            "orbital_launch_attempt_count_year": 146,
+            "location_launch_attempt_count_year": 10
+        },
+        "ext_id": "04154b70-045b-4e3a-bb5a-e5436091ba37",
+        "has_geom": true
+    },
+    "military": {
+        "ts": "2026-04-27T13:10:47.996409Z",
+        "props": {
+            "r": "SU-EGY",
+            "t": "B748",
+            "gs": 488.5,
+            "rc": 186,
+            "gva": 2,
+            "hex": "010230",
+            "lat": 50.453548,
+            "lon": -73.683002,
+            "nic": 8,
+            "sda": 2,
+            "sil": 3,
+            "spi": 0,
+            "mlat": [
+            ],
+            "rssi": -22.7,
+            "seen": 0,
+            "tisb": [
+            ],
+            "type": "adsb_icao",
+            "alert": 0,
+            "nac_p": 10,
+            "nac_v": 2,
+            "track": 218.93,
+            "flight": "EGY02   ",
+            "squawk": "0737",
+            "dbFlags": 1,
+            "nav_qnh": 1013.6,
+            "version": 2,
+            "alt_baro": 38000,
+            "alt_geom": 37900,
+            "category": "A5",
+            "messages": 4616,
+            "nic_baro": 1,
+            "seen_pos": 0.306,
+            "sil_type": "perhour",
+            "baro_rate": 0,
+            "emergency": "none",
+            "nav_heading": 239.77,
+            "nav_altitude_mcp": 38016
+        },
+        "ext_id": "010230",
+        "has_geom": true
+    },
+    "ripe_ris": {
+        "ts": "2026-04-27T13:10:12.200000Z",
+        "props": {
+            "country": "RU",
+            "updates": 34,
+            "withdrawals": 0,
+            "watched_asns": [
+                3216
+            ],
+            "announcements": 444,
+            "sample_prefixes": [
+                "81.211.88.0/21",
+                "62.141.112.0/20",
+                "81.211.46.0/24",
+                "139.181.32.0/24",
+                "81.211.96.0/19",
+                "195.239.112.0/21",
+                "195.239.136.0/21",
+                "213.33.232.0/21",
+                "195.218.144.0/20",
+                "195.218.224.0/20",
+                "213.33.240.0/20",
+                "213.221.48.0/20"
+            ],
+            "withdrawal_ratio": 0
+        },
+        "ext_id": "RU_1777295400",
+        "has_geom": true
+    },
+    "safecast": {
+        "ts": "2026-04-24T02:58:05.718000Z",
+        "props": {
+            "id": 278868048,
+            "unit": "211",
+            "value": 15,
+            "height": null,
+            "user_id": 1980,
+            "latitude": 51.397149,
+            "device_id": null,
+            "longitude": 7.072127,
+            "sensor_id": null,
+            "channel_id": null,
+            "station_id": null,
+            "captured_at": "2026-04-24T02:58:05.718Z",
+            "original_id": 278868048,
+            "devicetype_id": null,
+            "location_name": null,
+            "measurement_import_id": null
+        },
+        "ext_id": "2.78868048e+08",
+        "has_geom": true
+    },
+    "lightning": {
+        "ts": "2026-04-27T13:11:02.945522Z",
+        "props": {
+            "pol": 0,
+            "stations": 36
+        },
+        "ext_id": "1777295462945522700_39.131582_-92.273400",
+        "has_geom": true
+    },
+    "notam_tfr": {
+        "ts": "2026-04-27T00:00:00.000000Z",
+        "props": {
+            "type": "UAS PUBLIC GATHERING",
+            "state": "FL",
+            "facility": "ZJX",
+            "notam_id": "6/5962",
+            "detail_url": "https://tfr.faa.gov/download/detail_6_5962.xml",
+            "description": "Gainesville, FL, Friday, May 1, 2026 through Saturday, May 2, 2026 UTC",
+            "creation_date": "04/27/2026"
+        },
+        "ext_id": "6/5962",
+        "has_geom": true
+    },
+    "faa_status": {
+        "ts": "2026-04-27T13:06:15.270179Z",
+        "props": {
+            "avg": "",
+            "end": "May 22 at 01:00 UTC.",
+            "max": "",
+            "min": "",
+            "iata": "ASE",
+            "type": "",
+            "start": "Apr 23 at 15:00 UTC.",
+            "trend": "",
+            "reason": "!ASE 04/103 ASE AD AP CLSD EXC MEDIVAC HEL AND SAR HEL 2604231500-2605220100",
+            "category": "closure",
+            "feed_update_time": "Mon Apr 27 13:05:18 2026 GMT"
+        },
+        "ext_id": "ASE_closure",
+        "has_geom": true
+    },
+    "meteoalarm": {
+        "ts": "2026-05-01T23:00:00.000000Z",
+        "props": {
+            "web": "http://meteoalarm.eu/ne_NL/0/0/NL802-Hoek%20van%20Holland.html",
+            "event": "Minor Wind warning",
+            "onset": "2026-05-01T23:00:00+00:00",
+            "sender": "procesbewaker@knmi.nl",
+            "country": "Netherlands",
+            "expires": "2026-05-02T22:59:59+00:00",
+            "urgency": "Future",
+            "areaDesc": "Hoek van Holland",
+            "geocodes": "NL802",
+            "headline": "Wind - No warnings for Hoek van Holland - The Netherlands",
+            "severity": "Minor",
+            "certainty": "Likely",
+            "effective": "2026-04-27T00:02:24+00:00",
+            "senderName": "KNMI Royal Netherlands Meteorological Institute",
+            "description": "No warnings",
+            "instruction": ""
+        },
+        "ext_id": "2.49.0.0.528.0.NL.260502000000.2_FX_HVH",
+        "has_geom": true
+    },
+    "nws_alerts": {
+        "ts": "2026-04-27T13:05:00.000000Z",
+        "props": {
+            "id": "urn:oid:2.49.0.1.840.0.eaa54d1e3fb22e1f9b297d7150bc1fbeea8e6175.001.1",
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eaa54d1e3fb22e1f9b297d7150bc1fbeea8e6175.001.1",
+            "web": "http://www.weather.gov",
+            "code": "IPAWSv1.0",
+            "ends": "2026-04-27T08:45:00-05:00",
+            "note": null,
+            "sent": "2026-04-27T08:05:00-05:00",
+            "@type": "wx:Alert",
+            "event": "Tornado Warning",
+            "onset": "2026-04-27T08:05:00-05:00",
+            "scope": "Public",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "status": "Actual",
+            "expires": "2026-04-27T08:45:00-05:00",
+            "geocode": {
+                "UGC": [
+                    "MOC137",
+                    "MOC173"
+                ],
+                "SAME": [
+                    "029137",
+                    "029173"
+                ]
+            },
+            "urgency": "Immediate",
+            "areaDesc": "Monroe, MO; Ralls, MO",
+            "category": "Met",
+            "headline": "Tornado Warning issued April 27 at 8:05AM CDT until April 27 at 8:45AM CDT by NWS St Louis MO",
+            "language": "en-US",
+            "response": "Shelter",
+            "severity": "Extreme",
+            "certainty": "Observed",
+            "effective": "2026-04-27T08:05:00-05:00",
+            "eventCode": {
+                "SAME": [
+                    "SVS"
+                ],
+                "NationalWeatherService": [
+                    "TOW"
+                ]
+            },
+            "parameters": {
+                "VTEC": [
+                    "/O.CON.KLSX.TO.W.0030.000000T0000Z-260427T1345Z/"
+                ],
+                "EAS-ORG": [
+                    "WXR"
+                ],
+                "NWSheadline": [
+                    "TORNADO WARNING REMAINS IN EFFECT UNTIL 845 AM CDT FOR SOUTHEASTERN MONROE AND WESTERN RALLS COUNTIES IN NORTHEASTERN MISSOURI"
+                ],
+                "maxHailSize": [
+                    "0.00"
+                ],
+                "BLOCKCHANNEL": [
+                    "EAS",
+                    "NWEM",
+                    "CMAS"
+                ],
+                "WMOidentifier": [
+                    "WWUS53 KLSX 271305"
+                ],
+                "AWIPSidentifier": [
+                    "SVSLSX"
+                ],
+                "eventEndingTime": [
+                    "2026-04-27T08:45:00-05:00"
+                ],
+                "tornadoDetection": [
+                    "RADAR INDICATED"
+                ],
+                "eventMotionDescription": [
+                    "2026-04-27T12:54:00-00:00...storm...263DEG...42KT...39.44,-92.05"
+                ]
+            },
+            "references": [
+                {
+                    "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.637f3819c77c30ca4439c5ac1406dc21120c3ba4.001.1",
+                    "sent": "2026-04-27T07:54:00-05:00",
+                    "sender": "w-nws.webmaster@noaa.gov",
+                    "identifier": "urn:oid:2.49.0.1.840.0.637f3819c77c30ca4439c5ac1406dc21120c3ba4.001.1"
+                }
+            ],
+            "senderName": "NWS St Louis MO",
+            "description": "At 805 AM CDT, a severe thunderstorm capable of producing a tornado\nwas located 6 miles east of Paris, moving east at 50 mph.\n\nHAZARD...Tornado.\n\nSOURCE...Radar indicated rotation.\n\nIMPACT...Flying debris will be dangerous to those caught without\nshelter. Mobile homes will be damaged or destroyed. Damage\nto roofs, windows and vehicles will occur. Tree damage is\nlikely.\n\nLocations impacted include...\nStoutsville, Florida, Indian Creek, Perry, The Landing, Center,\nSpaulding and Rensselaer.\n\nThis includes the following State Parks...\nMark Twain Lake Recreational Area.",
+            "instruction": "Move to an interior room on the lowest floor of a well-built building\naway from windows. If you are outdoors, in a mobile home, or in a\nvehicle, move to the closest substantial shelter and protect yourself\nfrom flying debris.",
+            "messageType": "Update",
+            "affectedZones": [
+                "https://api.weather.gov/zones/county/MOC137",
+                "https://api.weather.gov/zones/county/MOC173"
+            ]
+        },
+        "ext_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eaa54d1e3fb22e1f9b297d7150bc1fbeea8e6175.001.1",
+        "has_geom": true
+    },
+    "nws_sigmet": {
+        "ts": "2026-04-27T11:55:00.000000Z",
+        "props": {
+            "hazard": "CONVECTIVE",
+            "icaoId": "KKCI",
+            "seriesId": "42C",
+            "severity": 5,
+            "alphaChar": "C",
+            "altitudeHi1": 34000,
+            "altitudeHi2": 34000,
+            "movementDir": 210,
+            "movementSpd": 20,
+            "validTimeTo": "2026-04-27T12:54:59.000Z",
+            "altitudeLow1": null,
+            "altitudeLow2": null,
+            "rawAirSigmet": "WSUS32 KKCI 271155\nSIGC \nCONVECTIVE SIGMET 42C\nVALID UNTIL 1355Z\nMN IA NE SD\nFROM RWF-50NW MCW-60N OVR-80ESE ONL-30WSW FSD-RWF\nAREA TS MOV FROM 21020KT. TOPS TO FL340.\n\nOUTLOOK VALID 271355-271755\nFROM 40N EAU-50NNW MSL-TXK-SPS-40N GLD-60E ABR-40N EAU\nREF WW 156 157.\nWST ISSUANCES EXPD. REFER TO MOST RECENT ACUS01 KWNS FROM STORM\nPREDICTION CENTER FOR SYNOPSIS AND METEOROLOGICAL DETAILS.",
+            "airSigmetType": "SIGMET",
+            "validTimeFrom": "2026-04-27T11:55:00.000Z"
+        },
+        "ext_id": "WSUS32 KKCI 271155\nSIGC \nCONVECT",
+        "has_geom": true
+    },
+    "oil_prices": {
+        "ts": "2026-04-27T00:00:00.000000Z",
+        "props": {
+            "low": 99.6,
+            "date": "2026-04-27",
+            "high": 102.18,
+            "open": 101.07,
+            "close": 101.27,
+            "symbol": "cb.f",
+            "volume": 0
+        },
+        "ext_id": "cb.f",
+        "has_geom": true
+    },
+    "gps_jamming": {
+        "ts": "2026-04-23T00:00:00.000000Z",
+        "props": {
+            "date": "2026-04-23",
+            "h3_cell": "8400585ffffffff",
+            "intensity": 1,
+            "h3_resolution": 4,
+            "count_bad_aircraft": 1,
+            "count_good_aircraft": 0
+        },
+        "ext_id": "2026-04-23_8400585ffffffff",
+        "has_geom": true
+    },
+    "water_gauges": {
+        "ts": "2026-04-27T12:56:16.810031Z",
+        "props": {
+            "site_code": "11120600",
+            "site_name": "JALAMA C NR LOMPOC CA",
+            "gage_height_ft": 3.28,
+            "timeseries_source": {
+                "name": "USGS:11120600:00065:00000",
+                "values": [
+                    {
+                        "value": [
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T04:00:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            },
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T04:15:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            },
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T04:30:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            },
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T04:45:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            },
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T05:00:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            },
+                            {
+                                "value": "3.28",
+                                "dateTime": "2026-04-27T05:15:00.000-07:00",
+                                "qualifiers": [
+                                    "P"
+                                ]
+                            }
+                        ],
+                        "method": [
+                            {
+                                "methodID": 352411,
+                                "methodDescription": ""
+                            }
+                        ],
+                        "offset": [
+                        ],
+                        "sample": [
+                        ],
+                        "source": [
+                        ],
+                        "qualifier": [
+                            {
+                                "network": "NWIS",
+                                "vocabulary": "uv_rmk_cd",
+                                "qualifierID": 0,
+                                "qualifierCode": "P",
+                                "qualifierDescription": "Provisional data subject to revision."
+                            }
+                        ],
+                        "censorCode": [
+                        ],
+                        "qualityControlLevel": [
+                        ]
+                    }
+                ],
+                "variable": {
+                    "oid": "45807202",
+                    "note": [
+                    ],
+                    "unit": {
+                        "unitCode": "ft"
+                    },
+                    "options": {
+                        "option": [
+                            {
+                                "name": "Statistic",
+                                "optionCode": "00000"
+                            }
+                        ]
+                    },
+                    "valueType": "Derived Value",
+                    "noDataValue": -999999,
+                    "variableCode": [
+                        {
+                            "value": "00065",
+                            "default": true,
+                            "network": "NWIS",
+                            "variableID": 45807202,
+                            "vocabulary": "NWIS:UnitValues"
+                        }
+                    ],
+                    "variableName": "Gage height, ft",
+                    "variableProperty": [
+                    ],
+                    "variableDescription": "Gage height, feet"
+                },
+                "sourceInfo": {
+                    "note": [
+                    ],
+                    "siteCode": [
+                        {
+                            "value": "11120600",
+                            "network": "NWIS",
+                            "agencyCode": "USGS"
+                        }
+                    ],
+                    "siteName": "JALAMA C NR LOMPOC CA",
+                    "siteType": [
+                    ],
+                    "geoLocation": {
+                        "localSiteXY": [
+                        ],
+                        "geogLocation": {
+                            "srs": "EPSG:4326",
+                            "latitude": 34.51366494,
+                            "longitude": -120.48584796
+                        }
+                    },
+                    "siteProperty": [
+                        {
+                            "name": "siteTypeCd",
+                            "value": "ST"
+                        },
+                        {
+                            "name": "hucCd",
+                            "value": "180600130101"
+                        },
+                        {
+                            "name": "stateCd",
+                            "value": "06"
+                        },
+                        {
+                            "name": "countyCd",
+                            "value": "06083"
+                        }
+                    ],
+                    "timeZoneInfo": {
+                        "defaultTimeZone": {
+                            "zoneOffset": "-08:00",
+                            "zoneAbbreviation": "PST"
+                        },
+                        "daylightSavingsTimeZone": {
+                            "zoneOffset": "-07:00",
+                            "zoneAbbreviation": "PDT"
+                        },
+                        "siteUsesDaylightSavingsTime": true
+                    }
+                }
+            }
+        },
+        "ext_id": "11120600",
+        "has_geom": true
+    },
+    "cyber_threats": {
+        "ts": "2026-04-27T12:56:18.156446Z",
+        "props": {
+            "port": 8080,
+            "status": "offline",
+            "as_name": "DIGITALOCEAN-ASN",
+            "country": "US",
+            "malware": "Emotet",
+            "hostname": null,
+            "as_number": 14061,
+            "first_seen": "2022-06-04 21:24:53",
+            "ip_address": "162.243.103.246",
+            "last_online": "2026-03-07"
+        },
+        "ext_id": "162.243.103.246",
+        "has_geom": true
+    },
+    "space_weather": {
+        "ts": "2026-04-27T01:06:25.970000Z",
+        "props": {
+            "message": "Space Weather Message Code: ALTTP2\r\nSerial Number: 1480\r\nIssue Time: 2026 Apr 27 0106 UTC\r\n\r\nALERT: Type II Radio Emission\r\nBegin Time: 2026 Apr 26 2257 UTC\r\nEstimated Velocity: 834 km/s\r\n\r\n\r\n\r\nDescription: Type II emissions occur in association with eruptions on the sun and typically indicate a coronal mass ejection is associated with a flare event.",
+            "product_id": "TIIA",
+            "issue_datetime": "2026-04-27 01:06:25.970"
+        },
+        "ext_id": "alert_TIIA",
+        "has_geom": true
+    },
+    "bgp_visibility": {
+        "ts": "2026-04-27T12:56:18.809909Z",
+        "props": {
+            "routed": 5183,
+            "country": "CN",
+            "registered": 6598,
+            "missing_asns": 1415,
+            "routed_ratio": 0.7855410730524401
+        },
+        "ext_id": "CN",
+        "has_geom": true
+    },
+    "nifc_wildfires": {
+        "ts": "2026-04-27T12:50:17.220000Z",
+        "props": {
+            "IrwinID": "{7C9F7270-8613-4BCB-91C4-23A26F58813A}",
+            "POOState": "US-FL",
+            "FireCause": "Undetermined",
+            "POOCounty": "Baker",
+            "IncidentName": "HANCOCK",
+            "IncidentSize": 359,
+            "DiscoveryAcres": null,
+            "FireOutDateTime": null,
+            "FireCauseGeneral": null,
+            "IncidentTypeKind": "FI",
+            "PercentContained": 100,
+            "FireBehaviorGeneral": "Minimal",
+            "IncidentTypeCategory": "WF",
+            "UniqueFireIdentifier": "2026-FLFLS-260600472",
+            "FireDiscoveryDateTime": 1774283400000,
+            "ModifiedOnDateTime_dt": 1777294217220,
+            "TotalIncidentPersonnel": 1,
+            "IncidentComplexityLevel": "Type 5 Incident",
+            "POOJurisdictionalAgency": "DVF",
+            "IncidentShortDescription": "21 Miles NE from LAKECITY, FL",
+            "IncidentManagementOrganization": "Type 5 IC"
+        },
+        "ext_id": "{7C9F7270-8613-4BCB-91C4-23A26F58813A}",
+        "has_geom": true
+    },
+    "wikipedia_surge": {
+        "ts": "2026-04-27T13:10:21.350732Z",
+        "props": {
+            "url": "https://en.wikipedia.org/wiki/Altestove",
+            "wiki": "enwiki",
+            "title": "Altestove",
+            "edits_10min": 3
+        },
+        "ext_id": "Altestove",
+        "has_geom": true
+    },
+    "travel_advisories": {
+        "ts": "2026-04-27T12:56:17.893750Z",
+        "props": {
+            "date": "Tue, 27 Jun 2023",
+            "link": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/zimbabwe-travel-advisory.html",
+            "title": "Zimbabwe - Level 2: Exercise Increased Caution",
+            "source": "US State Dept",
+            "country": "Zimbabwe",
+            "description": "Reissued after periodic review with updates to crime and civil unrest information.\nExercise increased caution in Zimbabwe due to&nbsp;crime and official harassment of U.S. citizens.&nbsp;\nCountry Summary:&nbsp;Opportunistic crime, such as pickpocketing, theft, and smashing of car windows with intent to steal, is common. Violent crime, such as assault, carjacking, and home invasion, also occurs. Criminals often target foreigners and residents suspected of having large sums of cash.\nDemonstrations may occur and increase in frequency around political events, such as elections. Large gatherings are often restricted by the government and can quickly escalate to violence.\nForeigners, journalists, and non-governmental organizations may be subject to heightened scrutiny in Zimbabwe.\nRead the&nbsp;country information page&nbsp;for additional information on travel to Zimbabwe.\nIf you decide to travel to Zimbabwe:\n\nStay alert and avoid openly displaying cash.\nCarry a copy of your passport and visa and leave originals in your hotel safe.\nStay away from political rallies, demonstrations, and crowds.\nMonitor local media for breaking events and be prepared to adjust your plans.\nKeep travel documents up to date and easily accessible.\nEnroll in the&nbsp;Smart Traveler Enrollment Program&nbsp;(STEP) to receive Alerts and make it easier to locate you in an emergency.\nFollow the Department of State on&nbsp;Facebook&nbsp;and&nbsp;Twitter.\nReview the&nbsp;Country Security Report&nbsp;for Zimbabwe.\nPrepare a contingency plan for emergency situations. Review the&nbsp;Traveler&#8217;s Checklist.\nVisit the CDC page for the latest&nbsp;Travel Health Information&nbsp;related to your travel."
+        },
+        "ext_id": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/zimbabwe-travel-advisory.html",
+        "has_geom": true
+    },
+    "official_advisories": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "title": "Security Alert: Demonstrations in Kyiv",
+            "description": "Avoid demonstrations and monitor local authorities.",
+            "link": "https://ua.usembassy.gov/category/alert/",
+            "source": "US Embassy Ukraine",
+            "source_country": "US",
+            "country": "Ukraine",
+            "country_code": "UA",
+            "date": "2026-04-28T12:00:00Z",
+            "advisory_type": "embassy_alert",
+            "source_api_endpoint": "https://ua.usembassy.gov/category/alert/feed/"
+        },
+        "ext_id": "embassy-fixture-ukraine",
+        "has_geom": true
+    },
+    "health_outbreaks": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "title": "Cholera outbreak - Sudan",
+            "description": "Disease outbreak notice.",
+            "link": "https://www.who.int/emergencies/disease-outbreak-news",
+            "source": "WHO Disease Outbreak News",
+            "country": "Sudan",
+            "country_code": "SD",
+            "disease": "cholera",
+            "alert_level": "alert",
+            "date": "2026-04-28T12:00:00Z",
+            "source_api_endpoint": "https://www.who.int/api/emergencies/diseaseoutbreaknews"
+        },
+        "ext_id": "health-fixture-sudan",
+        "has_geom": true
+    },
+    "epa_radnet": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "station_id": "us-seattle",
+            "station_name": "Seattle",
+            "state": "WA",
+            "country": "United States",
+            "value": 98.4,
+            "unit": "nSv/h",
+            "observed_at": "2026-04-28T12:00:00Z",
+            "baseline_value": 86.1,
+            "baseline_samples": 72,
+            "delta": 12.3,
+            "z_score": 2.4,
+            "severity": "elevated",
+            "freshness": "live",
+            "source_api_endpoint": "https://radnet.epa.gov/cdx-radnet-rest/api/rest/csv/2026/fixed/WA/SEATTLE"
+        },
+        "ext_id": "us-seattle:20260428T120000",
+        "has_geom": true
+    },
+    "portwatch_disruptions": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "eventid": "PW-1001",
+            "eventtype": "Port closure",
+            "eventname": "Port disruption fixture",
+            "alertlevel": "ORANGE",
+            "country": "Panama",
+            "fromdate": "2026-04-28T00:00:00Z",
+            "todate": "",
+            "active": true,
+            "severitytext": "Operational disruption",
+            "affectedports": ["Balboa"],
+            "n_affectedports": 1,
+            "disruption_score": 2,
+            "source_api_endpoint": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/portwatch_disruptions_database/FeatureServer/0/query"
+        },
+        "ext_id": "portwatch:PW-1001",
+        "has_geom": true
+    },
+    "portwatch_port_activity": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "portid": "12345",
+            "portname": "Balboa",
+            "iso3": "PAN",
+            "latest_date": "2026-04-28",
+            "window_days": 14,
+            "tanker_calls_14d": 96,
+            "avg_tanker_calls_day": 6.9,
+            "import_tanker_14d": 1200,
+            "export_tanker_14d": 800,
+            "activity_score": 2.1,
+            "source_api_endpoint": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Ports_Data/FeatureServer/0/query"
+        },
+        "ext_id": "port:12345",
+        "has_geom": true
+    },
+    "open_meteo_anomalies": {
+        "ts": "2026-04-28T00:00:00Z",
+        "props": {
+            "watch_aoi_id": "zone:sahel",
+            "watch_aoi_kind": "strategic_zone",
+            "watch_aoi_label": "Sahel",
+            "period_start": "2026-03-15",
+            "period_end": "2026-04-28",
+            "recent_days": 7,
+            "baseline_days": 30,
+            "temp_delta_c": 4.2,
+            "precip_delta_mm": -18.4,
+            "wind_delta_kmh": 5.2,
+            "heat_stress_score": 1.4,
+            "dryness_score": 2.1,
+            "extreme_precip_score": 0,
+            "wind_anomaly_score": 0,
+            "anomaly_score": 2.1,
+            "severity": "extreme",
+            "anomaly_type": "dry",
+            "source_api_endpoint": "https://archive-api.open-meteo.com/v1/archive"
+        },
+        "ext_id": "zone:sahel:20260428",
+        "has_geom": true
+    },
+    "unhcr_displacement": {
+        "ts": "2025-12-31T00:00:00Z",
+        "props": {
+            "country_code": "SDN",
+            "country": "Sudan",
+            "year": 2025,
+            "refugees": 900000,
+            "asylum_seekers": 20000,
+            "idps": 6000000,
+            "stateless": 0,
+            "total_displaced": 6920000,
+            "host_refugees": 300000,
+            "host_asylum_seekers": 10000,
+            "host_total": 310000,
+            "priority_score": 6920000,
+            "source_api_endpoint": "https://api.unhcr.org/population/v1/population/"
+        },
+        "ext_id": "SDN:2025",
+        "has_geom": true
+    },
+    "ghsl_population": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "source_dataset": "GHSL GHS-POP",
+            "source_role": "canonical_population_baseline",
+            "source_endpoint": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/",
+            "product_url": "https://human-settlement.emergency.copernicus.eu/ghs_pop2023.php",
+            "resolution": "100m global GeoTIFF; 3 arc-second and 30 arc-second WGS84 packages available",
+            "dataset_year": 2020,
+            "integration_state": "catalog_ready_preaggregation_required"
+        },
+        "ext_id": "ghsl_population:2020",
+        "has_geom": true
+    },
+    "ghsl_smod": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "source_dataset": "GHSL GHS-SMOD",
+            "source_role": "settlement_model_baseline",
+            "source_endpoint": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_SMOD_GLOBE_R2023A/",
+            "product_url": "https://human-settlement.emergency.copernicus.eu/ghs_smod2023.php",
+            "resolution": "1km settlement model, WGS84 packages available",
+            "dataset_year": 2020,
+            "integration_state": "catalog_ready_preaggregation_required"
+        },
+        "ext_id": "ghsl_smod:2020",
+        "has_geom": true
+    },
+    "worldpop_exposure": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "watch_aoi_id": "suez_canal",
+            "watch_aoi_kind": "maritime_chokepoint",
+            "watch_aoi_label": "Suez Canal",
+            "watch_aoi_priority": 0.95,
+            "population_year": 2020,
+            "radius_km": 10,
+            "total_population": 240000,
+            "population_1km": 18000,
+            "population_5km": 240000,
+            "population_25km": 1800000,
+            "population_1km_log": 4.255,
+            "population_5km_log": 5.38,
+            "population_25km_log": 6.255,
+            "density_1km_per_km2": 5729.578,
+            "density_5km_per_km2": 3055.775,
+            "density_25km_per_km2": 916.732,
+            "settlement_presence_score": 1.5,
+            "impact_prior_score": 2.064,
+            "low_population_context_score": 0,
+            "exposure_status": "finished",
+            "source_api_endpoint": "https://api.worldpop.org/v1/services/stats",
+            "integration_state": "sampled"
+        },
+        "ext_id": "suez_canal:2020",
+        "has_geom": true
+    },
+    "hrsl_population": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "source_dataset": "HRSL Population",
+            "source_role": "high_resolution_population_optional",
+            "source_endpoint": "https://registry.opendata.aws/dataforgood-fb-hrsl/",
+            "product_url": "s3://dataforgood-fb-hrsl/",
+            "resolution": "approximately 30m where country products are available",
+            "dataset_year": 2015,
+            "integration_state": "catalog_ready_country_coverage_varies"
+        },
+        "ext_id": "hrsl_population:2015",
+        "has_geom": true
+    },
+    "population_h3_exposure": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "watch_aoi_id": "suez_canal",
+            "watch_aoi_kind": "maritime_chokepoint",
+            "watch_aoi_label": "Suez Canal",
+            "population_year": 2020,
+            "population_1km": 18000,
+            "population_5km": 240000,
+            "population_25km": 1800000,
+            "settlement_presence_score": 1.5,
+            "impact_prior_score": 2.064,
+            "h3_cell": "84589adffffffff",
+            "h3_res": 4,
+            "derived_from_source": "worldpop_exposure",
+            "integration_state": "h3_preaggregated"
+        },
+        "ext_id": "suez_canal:2020:84589adffffffff",
+        "has_geom": true
+    },
+    "osm_settlement_context": {
+        "ts": "2026-04-28T12:00:00Z",
+        "props": {
+            "watch_aoi_id": "suez_canal",
+            "watch_aoi_kind": "maritime_chokepoint",
+            "watch_aoi_label": "Suez Canal",
+            "watch_aoi_priority": 0.95,
+            "building_count_1km": 320,
+            "radius_m": 1000,
+            "settlement_presence_score": 1.5,
+            "source_api_endpoint": "https://overpass-api.de/api/interpreter",
+            "source_dataset": "OpenStreetMap buildings via Overpass",
+            "integration_state": "sampled"
+        },
+        "ext_id": "suez_canal:20260428",
+        "has_geom": true
+    },
+    "copernicus_sentinel": {
+        "ts": "2026-04-27T06:46:21.025000Z",
+        "props": {
+            "online": true,
+            "s3_path": "/eodata/Sentinel-2/MSI/L1C/2026/04/27/S2C_MSIL1C_20260427T064621_N0512_R020_T40RDN_20260427T102817.SAFE",
+            "platform": "S2C",
+            "collection": "SENTINEL-2",
+            "product_id": "d9b15c73-6917-44ac-8281-a6f593d841f6",
+            "content_end": "2026-04-27T06:46:21.025000Z",
+            "product_name": "S2C_MSIL1C_20260427T064621_N0512_R020_T40RDN_20260427T102817.SAFE",
+            "content_start": "2026-04-27T06:46:21.025000Z",
+            "content_length": 814258225,
+            "product_family": "OPTICAL_L1C",
+            "publication_date": "2026-04-27T12:16:37.142205Z",
+            "acquisition_source": "copernicus_sentinel",
+            "acquisition_kind": "optical"
+        },
+        "ext_id": "d9b15c73-6917-44ac-8281-a6f593d841f6",
+        "has_geom": true
+    },
+    "eia930": {
+        "ts": "2026-05-01T10:00:00Z",
+        "props": {
+            "respondent": "PJM",
+            "respondent_name": "PJM",
+            "metric": "demand",
+            "type": "D",
+            "period": "2026-05-01T10:00:00Z",
+            "value_mw": 120000,
+            "demand_mw": 120000,
+            "baseline_mean_mw": 90000,
+            "baseline_samples": 24,
+            "z_score": 2.7,
+            "grid_anomaly_score": 1.5,
+            "source_api_endpoint": "https://api.eia.gov/v2/electricity/rto/region-data/data/"
+        },
+        "ext_id": "eia930:pjm:demand:20260501T1000",
+        "has_geom": true
+    },
+    "netblocks_rss": {
+        "ts": "2026-04-30T10:00:00Z",
+        "props": {
+            "title": "Internet shutdown imposed in Sudan amid protests",
+            "description": "Network data show a nationwide internet shutdown.",
+            "link": "https://netblocks.org/reports/example",
+            "country": "Sudan",
+            "outage_type": "internet_shutdown",
+            "severity_score": 3,
+            "interpreted_report": true,
+            "source_api_endpoint": "https://netblocks.org/feed"
+        },
+        "ext_id": "netblocks:example",
+        "has_geom": true
+    },
+    "purpleair": {
+        "ts": "2026-05-01T10:00:00Z",
+        "props": {
+            "sensor_index": "12345",
+            "name": "Industrial South",
+            "aoi_label": "la",
+            "pm25_atm_ugm3": 82.4,
+            "pm25_cf1_ugm3": 79.2,
+            "severity": "high",
+            "air_particulate_score": 1.79,
+            "last_seen": "2026-05-01T10:00:00Z",
+            "source_api_endpoint": "https://api.purpleair.com/v1/sensors"
+        },
+        "ext_id": "purpleair:12345:20260501T1000",
+        "has_geom": true
+    },
+    "wikipedia_pageviews": {
+        "ts": "2026-04-29T00:00:00Z",
+        "props": {
+            "wiki": "en.wikipedia",
+            "title": "Internet shutdown",
+            "article": "Internet_shutdown",
+            "mode": "pageviews",
+            "period": "2026-04-29",
+            "views": 400,
+            "baseline_views": 100,
+            "view_ratio": 4,
+            "z_score": 3.2,
+            "pageview_surge_score": 2.9,
+            "url": "https://en.wikipedia.org/wiki/Internet_shutdown"
+        },
+        "ext_id": "wiki-pageviews:internet-shutdown:20260429",
+        "has_geom": true
+    },
+    "ndbc_buoys": {
+        "ts": "2026-05-02T12:50:00Z",
+        "props": {
+            "station_id": "44065",
+            "station_name": "New York Harbor Entrance",
+            "observed_at": "2026-05-02T12:50:00Z",
+            "wind_speed_m_s": 18.5,
+            "gust_m_s": 25.1,
+            "wave_height_m": 4.2,
+            "pressure_hpa": 996.4,
+            "wind_gust_score": 1.01,
+            "wave_height_score": 0.6,
+            "low_pressure_score": 0.36,
+            "source_api_endpoint": "https://www.ndbc.noaa.gov/data/realtime2/44065.txt"
+        },
+        "ext_id": "44065:20260502T1250",
+        "has_geom": true
+    }
+}

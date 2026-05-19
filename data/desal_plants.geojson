@@ -1,0 +1,215 @@
+{
+  "type": "FeatureCollection",
+  "name": "Major Desalination Plants",
+  "description": "Hand-curated set of the world's largest seawater desalination plants, with Gulf-region bias since that's where the kinetic risk sits today (video 3 T3 L247-258). Capacities in million cubic metres / day (Mm³/d).",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Al Khair Desalination Plant",
+        "country": "SA",
+        "capacity_mm3d": 1.025,
+        "technology": "hybrid MSF/RO",
+        "operator": "Saline Water Conversion Corp"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [48.87, 27.07]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jubail Desalination Plant",
+        "country": "SA",
+        "capacity_mm3d": 0.800,
+        "technology": "MSF",
+        "operator": "SWCC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [49.65, 27.00]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shoaiba III",
+        "country": "SA",
+        "capacity_mm3d": 0.880,
+        "technology": "MSF",
+        "operator": "SWCC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.12, 20.70]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jebel Ali G Station",
+        "country": "AE",
+        "capacity_mm3d": 0.636,
+        "technology": "MSF/RO",
+        "operator": "DEWA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [55.07, 25.00]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taweelah Desalination",
+        "country": "AE",
+        "capacity_mm3d": 0.909,
+        "technology": "RO",
+        "operator": "TAQA / ACWA Power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.73, 24.80]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fujairah F2 Power & Desal",
+        "country": "AE",
+        "capacity_mm3d": 0.591,
+        "technology": "MSF/RO",
+        "operator": "TAQA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [56.35, 25.30]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Abu Fontas",
+        "country": "QA",
+        "capacity_mm3d": 0.455,
+        "technology": "MSF/RO",
+        "operator": "Kahramaa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [51.60, 25.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Umm Al Hayman",
+        "country": "KW",
+        "capacity_mm3d": 0.454,
+        "technology": "MSF",
+        "operator": "MEW Kuwait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [48.30, 29.05]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sitra Island Desal",
+        "country": "BH",
+        "capacity_mm3d": 0.091,
+        "technology": "MSF",
+        "operator": "EWA Bahrain",
+        "evidence": "video5 T5 L232 (7HEUCLc7aL8) — Citra Island energy strike target"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [50.63, 26.16]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hadera Desal",
+        "country": "IL",
+        "capacity_mm3d": 0.348,
+        "technology": "RO",
+        "operator": "IDE Technologies"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.91, 32.47]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sorek B",
+        "country": "IL",
+        "capacity_mm3d": 0.548,
+        "technology": "RO",
+        "operator": "IDE Technologies"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.72, 31.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ashkelon Desal",
+        "country": "IL",
+        "capacity_mm3d": 0.395,
+        "technology": "RO",
+        "operator": "IDE Technologies"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.55, 31.70]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magtaa",
+        "country": "DZ",
+        "capacity_mm3d": 0.500,
+        "technology": "RO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.30, 35.73]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Carlsbad Desalination Plant",
+        "country": "US",
+        "capacity_mm3d": 0.200,
+        "technology": "RO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.33, 33.14]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Victorian Desalination Plant",
+        "country": "AU",
+        "capacity_mm3d": 0.450,
+        "technology": "RO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [145.60, -38.60]
+      }
+    }
+  ]
+}

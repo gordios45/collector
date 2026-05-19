@@ -1,0 +1,205 @@
+{
+  "type": "FeatureCollection",
+  "name": "Strategic Oil & Gas Pipelines",
+  "description": "Hand-curated set of strategic pipelines most relevant to Gulf bypass / disruption stories. Coordinates are approximate (±10km) — enough for strategic visualization, not for engineering. Sources: public route descriptions + OSM cross-reference as of 2026-04.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East-West Crude Oil Pipeline",
+        "alias": "Petroline",
+        "operator": "Saudi Aramco",
+        "purpose": "Gulf → Red Sea bypass (Hormuz alternative)",
+        "capacity_bpd": 5000000,
+        "product": "crude",
+        "bundle": "gulf_strategic",
+        "evidence": "video3 T3 L210-215 (ccZzOGnT4Cg)"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [49.5953, 27.0075], [48.9811, 26.4142], [47.6, 25.3],
+          [46.0, 24.8], [44.0, 24.3], [42.5, 24.2],
+          [40.5, 24.5], [39.2, 24.35], [38.0625, 24.0886]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abu Dhabi Crude Oil Pipeline",
+        "alias": "Bab-Habshan-Fujairah",
+        "operator": "ADNOC",
+        "purpose": "Gulf → Gulf of Oman bypass (Hormuz alternative)",
+        "capacity_bpd": 1500000,
+        "product": "crude",
+        "bundle": "gulf_strategic",
+        "evidence": "video3 T3 L224-228 (ccZzOGnT4Cg), ref_v3_pipelines_layer.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [53.2, 24.2], [53.95, 24.25], [54.6, 24.3],
+          [55.5, 24.8], [56.2, 25.1], [56.35, 25.1],
+          [56.35, 25.3]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SUMED Pipeline",
+        "alias": "Suez-Mediterranean",
+        "operator": "Arab Petroleum Pipelines Co",
+        "purpose": "Suez Canal bypass for VLCCs",
+        "capacity_bpd": 2340000,
+        "product": "crude",
+        "bundle": "global_strategic",
+        "evidence": "well-known open data"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [32.568, 29.9667], [32.3, 30.4], [31.95, 30.8],
+          [31.2, 31.25], [30.2, 31.4], [29.84, 31.27]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iran-Jask Crude Oil Pipeline",
+        "alias": "Goreh-Jask",
+        "operator": "NIOC",
+        "purpose": "Iran Gulf of Oman export (own Hormuz bypass)",
+        "capacity_bpd": 300000,
+        "product": "crude",
+        "bundle": "gulf_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [50.8, 29.4], [52.1, 28.9], [53.8, 28.2],
+          [55.5, 27.3], [57.2, 26.2], [57.77, 25.64]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baku-Tbilisi-Ceyhan Pipeline",
+        "alias": "BTC",
+        "operator": "BP",
+        "purpose": "Caspian → Mediterranean bypass of Russia",
+        "capacity_bpd": 1200000,
+        "product": "crude",
+        "bundle": "caspian_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [49.867, 40.377], [48.0, 40.8], [46.0, 41.3],
+          [44.5, 41.8], [42.8, 41.6], [41.0, 40.6],
+          [39.0, 39.5], [37.0, 38.2], [35.65, 36.85]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Druzhba Pipeline (Northern Branch)",
+        "alias": "Friendship",
+        "operator": "Transneft",
+        "purpose": "Russia → Central Europe crude",
+        "capacity_bpd": 2000000,
+        "product": "crude",
+        "bundle": "eurasian_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [52.23, 53.18], [44.0, 54.0], [36.0, 54.5],
+          [32.0, 52.9], [27.5, 52.4], [23.6, 52.3],
+          [17.6, 52.4], [14.5, 52.5], [11.5, 53.1]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Trans-Anatolian Natural Gas Pipeline",
+        "alias": "TANAP",
+        "operator": "TANAP Consortium",
+        "purpose": "Caspian → Turkey → Europe gas",
+        "capacity_bcma": 16,
+        "product": "gas",
+        "bundle": "caspian_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [49.867, 40.377], [46.0, 40.9], [43.0, 40.6],
+          [40.0, 40.2], [36.0, 40.0], [33.0, 40.5],
+          [28.0, 41.0], [26.13, 41.45]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Forcados Pipeline",
+        "alias": "Forcados-Yokri Export",
+        "operator": "Shell/NNPC",
+        "purpose": "Niger Delta → Forcados terminal",
+        "capacity_bpd": 400000,
+        "product": "crude",
+        "bundle": "africa_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [6.2, 5.9], [5.8, 5.6], [5.35, 5.35]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Keystone Pipeline",
+        "alias": "Keystone",
+        "operator": "TC Energy",
+        "purpose": "Alberta tar sands → US Gulf",
+        "capacity_bpd": 600000,
+        "product": "crude",
+        "bundle": "americas_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-110.0, 55.0], [-107.5, 51.0], [-104.5, 48.0],
+          [-100.0, 44.5], [-96.5, 40.0], [-94.5, 38.5],
+          [-93.7, 36.2], [-94.8, 29.7]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Power of Siberia",
+        "operator": "Gazprom",
+        "purpose": "Eastern Russia → China gas",
+        "capacity_bcma": 38,
+        "product": "gas",
+        "bundle": "eurasian_strategic"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [113.4, 62.5], [118.0, 57.0], [122.0, 54.0],
+          [125.0, 52.0], [127.5, 50.2], [127.5, 45.8],
+          [125.0, 42.5], [120.0, 40.0], [116.4, 39.9]
+        ]
+      }
+    }
+  ]
+}

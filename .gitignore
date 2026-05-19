@@ -1,0 +1,10 @@
+bin/
+backups/
+*.log
+.env
+.env-local
+.cache/
+/ingester
+tile-cache/
+.DS_Store
+tmp_resources/

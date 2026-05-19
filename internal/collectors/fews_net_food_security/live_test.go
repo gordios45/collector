@@ -1,0 +1,30 @@
+// Copyright 2026 Gordios45 contributors
+// SPDX-License-Identifier: Apache-2.0
+
+package fews_net_food_security
+
+import (
+	"context"
+	"os"
+	"testing"
+	"time"
+)
+
+func TestLiveFetch(t *testing.T) {
+	if os.Getenv("GORDIOS_LIVE_COLLECTOR_TESTS") != "1" {
+		t.Skip("set GORDIOS_LIVE_COLLECTOR_TESTS=1")
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
+	defer cancel()
+	c, err := New()
+	if err != nil {
+		t.Fatal(err)
+	}
+	evs, err := c.Fetch(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(evs) == 0 {
+		t.Fatal("expected live FEWS NET events")
+	}
+}

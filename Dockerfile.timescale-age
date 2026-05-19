@@ -1,0 +1,15 @@
+FROM timescale/timescaledb-ha:pg16
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       ca-certificates git build-essential postgresql-server-dev-16 flex bison \
+    && if apt-cache show postgresql-16-age >/dev/null 2>&1; then \
+         apt-get install -y --no-install-recommends postgresql-16-age; \
+       else \
+         git clone --depth 1 --branch PG16 https://github.com/apache/age.git /tmp/apache-age \
+         && make -C /tmp/apache-age PG_CONFIG=/usr/lib/postgresql/16/bin/pg_config install \
+         && rm -rf /tmp/apache-age; \
+       fi \
+    && rm -rf /var/lib/apt/lists/*
+USER postgres

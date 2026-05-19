@@ -1,0 +1,9 @@
+bin/
+tile-cache/
+backups/
+.cache/
+.env
+.DS_Store
+.github/
+tmp_resources/
+*.log
