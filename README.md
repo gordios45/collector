@@ -11,7 +11,7 @@ and gateway design.
 
 Requirements:
 
-- Go 1.25
+- Go 1.26
 - Docker with Docker Compose
 - `curl`; `jq` is useful for examples
 
