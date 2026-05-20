@@ -97,7 +97,7 @@ Optional collectors use these credentials or enable flags:
 | `GORDIOS_ENABLE_MARTRACK`, `MARTRACK_USER`, `MARTRACK_PASS` | `martrack` |
 | `GORDIOS_ENABLE_MARITIME_STREAM` | `maritime` stream |
 
-See [docs/SOURCES.md](SOURCES.md) for source coverage and source-data
+See [SOURCES.md](SOURCES.md) for source coverage and source-data
 terms.
 
 ## Importers
@@ -116,7 +116,7 @@ go run ./cmd/importer carrier-advisories --dir=../tmp_resources
 Remote importers cache downloads and use `ETag`/`Last-Modified` validators when
 upstreams provide them. If an upstream has no validators, the importer keeps the
 cached copy and logs which cache file to remove; pass `-refresh` for a fresh
-download. Source-data terms are listed in [docs/SOURCES.md](SOURCES.md).
+download. Source-data terms are listed in [SOURCES.md](SOURCES.md).
 
 ## Gateway Examples
 
