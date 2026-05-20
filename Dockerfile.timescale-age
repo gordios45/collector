@@ -1,15 +1,37 @@
-FROM timescale/timescaledb-ha:pg16
+ARG TIMESCALE_HA_IMAGE=timescale/timescaledb-ha:pg18.4-ts2.27.0@sha256:74f7a8f49ed950a9353fd18882a6af7c5a39294266bf67a8d90f455ae4aa7f32
+
+ARG POSTGRES_MAJOR=18
+ARG AGE_VERSION=1.7.0
+ARG AGE_SHA512=129e64d70ec82e0fb47202145af45915b335048472c9a869129c31e4cb59f15a271a929a36a7abb2822272591e6476786c36908cb35a10cd73f2ecd0a617d3bb
+
+FROM ${TIMESCALE_HA_IMAGE} AS age-build
+
+ARG POSTGRES_MAJOR
+ARG AGE_VERSION
+ARG AGE_SHA512
 
 USER root
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       ca-certificates git build-essential postgresql-server-dev-16 flex bison \
-    && if apt-cache show postgresql-16-age >/dev/null 2>&1; then \
-         apt-get install -y --no-install-recommends postgresql-16-age; \
-       else \
-         git clone --depth 1 --branch PG16 https://github.com/apache/age.git /tmp/apache-age \
-         && make -C /tmp/apache-age PG_CONFIG=/usr/lib/postgresql/16/bin/pg_config install \
-         && rm -rf /tmp/apache-age; \
-       fi \
+       ca-certificates curl build-essential postgresql-server-dev-${POSTGRES_MAJOR} flex bison \
+    && curl -fsSL "https://archive.apache.org/dist/age/PG${POSTGRES_MAJOR}/${AGE_VERSION}/apache-age-${AGE_VERSION}-src.tar.gz" -o /tmp/apache-age.tar.gz \
+    && echo "${AGE_SHA512}  /tmp/apache-age.tar.gz" | sha512sum -c - \
+    && mkdir /tmp/apache-age \
+    && tar -xzf /tmp/apache-age.tar.gz -C /tmp/apache-age --strip-components=1 \
+    && make -C /tmp/apache-age PG_CONFIG=/usr/lib/postgresql/${POSTGRES_MAJOR}/bin/pg_config install \
+    && tar -C / -czf /tmp/apache-age-install.tar.gz \
+       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/age.so \
+       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/bitcode/age \
+       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/bitcode/age.index.bc \
+       usr/share/postgresql/${POSTGRES_MAJOR}/extension/age.control \
+       usr/share/postgresql/${POSTGRES_MAJOR}/extension/age--${AGE_VERSION}.sql \
+    && rm -rf /tmp/apache-age /tmp/apache-age.tar.gz \
     && rm -rf /var/lib/apt/lists/*
+
+FROM ${TIMESCALE_HA_IMAGE}
+
+COPY --from=age-build /tmp/apache-age-install.tar.gz /tmp/apache-age-install.tar.gz
+USER root
+RUN tar -C / -xzf /tmp/apache-age-install.tar.gz \
+    && rm /tmp/apache-age-install.tar.gz
 USER postgres

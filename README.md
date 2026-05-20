@@ -27,7 +27,8 @@ This creates a clearly named local test stack:
 
 - database container: `gordios-collection-test-db`
 - database: `gordios_collection_test`
-- volume: `gordios_collection_test_dbdata`
+- PostgreSQL image: `gordios-timescale-age:pg18.4-ts2.27.0`
+- volume: `gordios_collection_test_pg18_dbdata`
 - Postgres port: `16432`
 - raw gateway: `http://localhost:18080`
 
