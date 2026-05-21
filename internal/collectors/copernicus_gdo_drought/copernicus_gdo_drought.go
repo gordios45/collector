@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"os"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/gordios45/collector/internal/collectors/collectorutil"
@@ -99,29 +100,37 @@ func (c *Collector) Fetch(ctx context.Context) ([]events.Event, error) {
 }
 
 func fetchLatestCDI(ctx context.Context, now time.Time) (image.Image, time.Time, string, error) {
-	var firstErr error
+	var failures []string
 	for _, d := range candidateDates(now) {
 		endpoint := cdiCoverageURL(d)
 		buf, err := httpx.GetBytesWithClient(ctx, httpClient, endpoint, map[string]string{"Accept": "image/tiff,*/*"})
 		if err != nil {
-			if firstErr == nil {
-				firstErr = err
-			}
+			failures = append(failures, fmt.Sprintf("%s: %s", d.Format("2006-01-02"), compactFetchErr(err)))
 			continue
 		}
 		img, err := tiff.Decode(bytes.NewReader(buf))
 		if err != nil {
-			if firstErr == nil {
-				firstErr = err
-			}
+			failures = append(failures, fmt.Sprintf("%s: decode GeoTIFF: %v", d.Format("2006-01-02"), err))
 			continue
 		}
 		return img, d, endpoint, nil
 	}
-	if firstErr == nil {
-		firstErr = fmt.Errorf("no candidate GDO CDI dates")
+	if len(failures) == 0 {
+		return nil, time.Time{}, "", fmt.Errorf("no candidate GDO CDI dates")
 	}
-	return nil, time.Time{}, "", firstErr
+	return nil, time.Time{}, "", fmt.Errorf("fetch GDO CDI coverage failed for %d candidate date(s): %s", len(failures), strings.Join(failures, "; "))
+}
+
+func compactFetchErr(err error) string {
+	msg := err.Error()
+
+	// Copernicus WCS returns a generic HTML page for 500s; the body adds no
+	// useful diagnosis and makes aggregated candidate-date errors unreadable.
+	if idx := strings.Index(msg, " → 500:"); idx >= 0 {
+		return msg[:idx] + " → 500: Server Error"
+	}
+
+	return msg
 }
 
 func cdiCoverageURL(d time.Time) string {
