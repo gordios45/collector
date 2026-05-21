@@ -28,16 +28,17 @@ are listed in the source-data section below.
 | `cables` | TeleGeography Submarine Cable Map | `polygon_static` | Remote static submarine cable route features imported by `cmd/importer features`. |
 | `cams_atmosphere` | CAMS via Open-Meteo Air Quality API | `event` | CO, NO2, SO2, PM, aerosol, and dust samples over active AOIs. |
 | `capitol_buildings_us` | USGS / ArcGIS State Capitol | `feature_static` | U.S. state capitol building features. |
-| `cctv_cameras` | TfL JamCam, OpenTrafficCamMap, camera seed file, OSM Overpass | `feature_inventory` | Camera inventory collector that writes camera features and provenance. |
+| `cctv_cameras` | TfL JamCam, ASFINAG, Ontario 511, Alberta 511, Travel Midwest, Singapore LTA/data.gov.sg, OpenTrafficCamMap, camera seed file, OSM Overpass | `feature_inventory` | Camera inventory collector that writes camera features and provenance. |
 | `cems_gfm` | Copernicus EMS Global Flood Monitoring | `event` | AOI flood-monitoring product API with explicit token-required states. |
 | `cems_rapid_mapping` | Copernicus EMS Rapid Mapping | `event` | Public activations with AOI/product counts, categories, countries, and centroids. |
 | `chokepoints` | Project-authored chokepoint seed | `polygon_static` | Approximate maritime chokepoint polygons from bundled seed data. |
-| `cisa_kev` | CISA Known Exploited Vulnerabilities | `event` | KEV catalog enriched per CVE with EPSS, NVD, and CISA Vulnrichment records. |
+| `cisa_kev` | CISA Known Exploited Vulnerabilities | `event` | KEV catalog enriched per CVE with EPSS, NVD, MITRE CVE AWG fallback records, and CISA Vulnrichment records. |
 | `cloudflare_radar` | Cloudflare Radar | `event` | Internet outage and DDoS-origin observations. |
 | `copernicus_gdo_drought` | Copernicus Global Drought Observatory | `event` | Combined Drought Indicator raster samples over active AOIs. |
 | `copernicus_sentinel` | Copernicus Data Space Ecosystem Sentinel catalogue | `event` | Sentinel-1/2 catalogue product intersections for active candidate AOIs. |
 | `cruise_terminals_us` | ArcGIS Open Data cruise terminals | `feature_static` | U.S. cruise line terminal features. |
 | `cyber_threats` | abuse.ch, C2IntelFeeds, Ransomware.live | `event` | OSINT cyber indicator feeds including C2 IPs, malware URLs, and recent ransomware victims where available. |
+| `deepstate_frontlines` | DeepStateMap | `feature_inventory` | Current Ukraine front-line GeoJSON snapshot written as a replace-all feature layer. |
 | `desal_plants` | Project-authored desalination plant seed | `polygon_static` | Approximate desalination plant features from bundled seed data. |
 | `direct_flood_cap` | NOAA/NWS active alerts | `event` | Direct flood-warning CAP slice, currently starting from active NOAA/NWS flood alerts. |
 | `direct_weather_alerts` | Canada GeoMet, MET Norway MetAlerts, JMA warning map | `event` | Direct national weather alert feeds used to supplement WMO and MeteoAlarm coverage. |
@@ -89,6 +90,7 @@ are listed in the source-data section below.
 | `ifrc_go` | IFRC GO | `event` | Public disaster and emergency event feed. |
 | `imerg_precip` | NASA GPM IMERG | `event` | Precipitation catalog/watch integration with explicit PPS download-auth state. |
 | `inform_risk_severity` | INFORM Risk and INFORM Severity | `event` | Humanitarian risk and severity spreadsheets. |
+| `internetdb_exposure` | Shodan InternetDB and ip-api.com | `event` | Bounded public-IP exposure observations for configured/watchlisted IPs, including open ports, CVEs, tags, and coarse geolocation. |
 | `ioda` | CAIDA IODA | `event` | Raw country-level internet outage signals for configured watchlists. |
 | `jma_rsmc` | JMA RSMC Tokyo | `event` | Northwest Pacific active tropical cyclone list and storm specifications. |
 | `jtwc` | JTWC via NRL ATCF mirror | `event` | Active tropical cyclone tracks outside the NHC basin. |
@@ -171,6 +173,7 @@ are listed in the source-data section below.
 | `swdi_radar_signatures` | NOAA/NCEI SWDI | `event` | Radar-derived tornado-vortex, hail, and mesocyclone signature point detections. |
 | `tle` | CelesTrak | `event` | Multi-group TLE catalogue. |
 | `tor_metrics` | Tor Metrics | `event` | Country direct-user and bridge-user deltas. |
+| `tor_exit_nodes` | Tor Project bulk exit list | `event` | Daily non-geospatial snapshot of active Tor exit-node IP indicators. |
 | `traffic` | Overpass API | `proxy` | On-demand `/api/overpass` proxy; no ingestion, cached per bbox. |
 | `travel_advisories` | U.S. State Department and UK FCDO | `event` | Travel advisory RSS/Atom feeds mapped to country centroids. |
 | `thailand_tmd_alerts` | Thai Meteorological Department Warning page | `event` | Official Thailand warning bulletins scraped from the TMD warning page. |
@@ -213,6 +216,11 @@ inputs where the source artifact or upstream terms have been checked.
 | Source | Collector path | License / terms | Reference |
 | --- | --- | --- | --- |
 | TfL JamCam / Unified API | `cctv_cameras` | TfL Transport Data Service license. Attribution, branding, registration, and rate-limit conditions apply. | [TfL terms](https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service), [TfL data sources](https://tfl.gov.uk/corporate/data-sources) |
+| ASFINAG ODO webcams | `cctv_cameras` | ASFINAG public website/API terms apply; collector stores camera inventory metadata and image URLs only. | [ASFINAG](https://www.asfinag.at/) |
+| Ontario 511 cameras | `cctv_cameras` | Ontario 511 public API terms apply; collector stores camera inventory metadata and image URLs only. | [Ontario 511](https://511on.ca/) |
+| Alberta 511 cameras | `cctv_cameras` | Alberta 511 public API terms apply; collector stores camera inventory metadata and image URLs only. | [Alberta 511](https://511.alberta.ca/) |
+| Travel Midwest cameras | `cctv_cameras` | Travel Midwest public site/API terms apply; collector stores camera inventory metadata and image URLs only. | [Travel Midwest](https://www.travelmidwest.com/) |
+| Singapore LTA traffic images via data.gov.sg | `cctv_cameras`, `singapore_realtime` | Singapore Open Data Licence applies unless otherwise stated; API access is also subject to data.gov.sg API terms. | [data.gov.sg API guide](https://guide.data.gov.sg/developer-guide), [Singapore Open Data Licence](https://data.gov.sg/open-data-licence), [privacy and terms](https://data.gov.sg/privacy-and-terms) |
 | OpenTrafficCamMap | `cctv_cameras` | MIT. | [Repository](https://github.com/AidanWelch/OpenTrafficCamMap), [license](https://github.com/AidanWelch/OpenTrafficCamMap/blob/master/LICENSE) |
 | OpenStreetMap via Overpass | `cctv_cameras` AOI cameras | ODbL. Attribution and license notice required. | [OSM copyright](https://www.openstreetmap.org/copyright/attribution-guide/), [OSMF API usage policy](https://operations.osmfoundation.org/policies/api/) |
 | TrafficVision / OKTraffic rows in `data/cameras.json` | local camera seed |  | [OU ITS OKTraffic](https://its.ou.edu/pages/p_oktraffic.php), [ODOT disclaimer](https://www.odot.org/disclaimer-engr.htm) |
@@ -249,6 +257,11 @@ inputs where the source artifact or upstream terms have been checked.
 | data.gov.sg real-time APIs | `singapore_realtime` | Singapore Open Data Licence applies unless otherwise stated; API access is also subject to data.gov.sg API terms. | [data.gov.sg API guide](https://guide.data.gov.sg/developer-guide), [Singapore Open Data Licence](https://data.gov.sg/open-data-licence), [privacy and terms](https://data.gov.sg/privacy-and-terms) |
 | PAGASA and PHIVOLCS official status pages | `pagasa_phivolcs_monitor` |  | [PAGASA tropical cyclone bulletin](https://bagong.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin), [PHIVOLCS earthquakes](https://earthquake.phivolcs.dost.gov.ph/), [PHIVOLCS WOVOdat](https://wovodat.phivolcs.dost.gov.ph/) |
 | ASEAN Specialised Meteorological Centre hotspot counts | `asean_haze_hotspots` | ASMC terms apply; ASMC notes certain products are derived from external agencies and may also be subject to those agencies' terms. | [ASMC hotspot page](https://asmc.asean.org/asmc-haze-hotspot-daily-new/), [ASMC terms](https://asmc.asean.org/terms-of-use/) |
+| DeepStateMap front-line GeoJSON | `deepstate_frontlines` | DeepStateMap public API/site terms apply; collector stores current snapshot geometry and properties. | [DeepStateMap](https://deepstatemap.live/) |
+| Shodan InternetDB | `internetdb_exposure` | Shodan InternetDB public endpoint terms apply; collector queries only individual configured public IPs and does not probe or sweep networks. | [InternetDB](https://internetdb.shodan.io/) |
+| ip-api.com geolocation | `internetdb_exposure` | ip-api.com public endpoint terms and free-tier constraints apply; collector stores only coarse IP geolocation/provider metadata for selected InternetDB targets. | [ip-api.com](https://ip-api.com/) |
+| Tor Project bulk exit list | `tor_exit_nodes` | Tor Project exit-list data; collector stores active exit IP indicators. | [Tor check service](https://check.torproject.org/) |
+| MITRE CVE AWG API | `cisa_kev` | CVE Program record API used as fallback CVE 5.0 enrichment when NVD is unavailable or missing a record. | [CVE API](https://cveawg.mitre.org/api/) |
 
 ### Remote Feature Importers
 
@@ -279,6 +292,9 @@ inputs where the source artifact or upstream terms have been checked.
 | `PURPLEAIR_API_KEY` | `purpleair` | PurpleAir API access. |
 | `UCDP_ACCESS_TOKEN` | `ucdp` | UCDP GED API access. |
 | `NVD_API_KEY` | `cisa_kev` | Optional NVD enrichment budget. |
+| `DEEPSTATE_FRONTLINES_URL`, `GORDIOS_DISABLE_DEEPSTATE_FRONTLINES=1` | `deepstate_frontlines` | Optional DeepStateMap endpoint override or disable flag. |
+| `INTERNETDB_TARGETS`, `INTERNETDB_MAX_TARGETS`, `GORDIOS_DISABLE_INTERNETDB_EXPOSURE=1` | `internetdb_exposure` | Comma-separated public IP watchlist, per-run cap, and disable flag. CIDRs and private/reserved IPs are rejected. |
+| `TOR_EXIT_MAX_NODES`, `GORDIOS_DISABLE_TOR_EXIT_NODES=1` | `tor_exit_nodes` | Optional maximum number of Tor exit-node IP indicators retained per fetch and disable flag. |
 | `AISSTREAM_KEY`, `GORDIOS_ENABLE_MARITIME_STREAM=1` | `maritime` | AIS stream access. |
 | `GLOBALPING_TOKEN` | `globalping_measurements` | Optional Globalping API access. |
 | `OPENSKY_USER`, `OPENSKY_PASS` | `flights` | Optional OpenSky credentials. |

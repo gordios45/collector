@@ -26,11 +26,16 @@ import (
 )
 
 const (
-	sourceID        = "cctv_cameras"
-	tflJamCamURL    = "https://api.tfl.gov.uk/Place/Type/JamCam"
-	otcmListURL     = "https://api.github.com/repos/AidanWelch/OpenTrafficCamMap/contents/cameras"
-	otcmRawFallback = "https://raw.githubusercontent.com/AidanWelch/OpenTrafficCamMap/master/cameras/USA.json"
-	overpassURL     = "https://overpass-api.de/api/interpreter"
+	sourceID               = "cctv_cameras"
+	tflJamCamURL           = "https://api.tfl.gov.uk/Place/Type/JamCam"
+	otcmListURL            = "https://api.github.com/repos/AidanWelch/OpenTrafficCamMap/contents/cameras"
+	otcmRawFallback        = "https://raw.githubusercontent.com/AidanWelch/OpenTrafficCamMap/master/cameras/USA.json"
+	asfinagWebcamsURL      = "https://odo.asfinag.at/odo/rest/sec/resource/001/json/webcams?language=atDE"
+	ontario511CamerasURL   = "https://511on.ca/api/v2/get/cameras"
+	alberta511CamerasURL   = "https://511.alberta.ca/api/v2/get/cameras"
+	travelMidwestCameraURL = "https://www.travelmidwest.com/lmiga/cameraReport.json"
+	singaporeTrafficURL    = "https://api.data.gov.sg/v1/transport/traffic-images"
+	overpassURL            = "https://overpass-api.de/api/interpreter"
 )
 
 type Collector struct {
@@ -67,6 +72,11 @@ func (c *Collector) FetchFeatures(ctx context.Context) ([]features.Feature, erro
 	out := map[string]features.Feature{}
 
 	c.addTfL(ctx, now, out)
+	c.addASFINAG(ctx, now, out)
+	c.addOntario511(ctx, now, out)
+	c.addAlberta511(ctx, now, out)
+	c.addTravelMidwest(ctx, now, out)
+	c.addSingaporeTrafficImages(ctx, now, out)
 	c.addOTCM(ctx, now, out)
 	c.addCameraFile(now, out)
 	c.addOSMAOIs(ctx, now, out)
@@ -115,6 +125,104 @@ func (c *Collector) addTfL(ctx context.Context, now time.Time, out map[string]fe
 		name := propx.FirstNonEmpty(row.CommonName, "TfL JamCam")
 		props = cameraProps(props, now, "tfl_jamcam", "TfL JamCam", tflJamCamURL, "https://api.tfl.gov.uk/", name, "GB")
 		put(out, "tfl:"+row.ID, row.Lat, row.Lon, props)
+	}
+}
+
+func (c *Collector) addASFINAG(ctx context.Context, now time.Time, out map[string]features.Feature) {
+	var rows []map[string]any
+	headers := map[string]string{
+		"Accept":        "application/json",
+		"Authorization": "Basic bWFwX3dpZGdldDp0ZWdkaXc=",
+		"Referer":       "https://www.asfinag.at/",
+		"Origin":        "https://www.asfinag.at",
+	}
+	if err := httpx.GetJSONWithClient(ctx, c.client, asfinagWebcamsURL, headers, &rows); err != nil {
+		return
+	}
+	addASFINAGRows(now, out, rows)
+}
+
+func addASFINAGRows(now time.Time, out map[string]features.Feature, rows []map[string]any) {
+	for _, row := range rows {
+		id := firstString(row, "wcs_id", "id")
+		if strings.HasPrefix(id, "Utinform") {
+			continue
+		}
+		lat, latOK := firstFloat(row, "wgs84_lat", "lat", "latitude")
+		lon, lonOK := firstFloat(row, "wgs84_lon", "lon", "lng", "longitude")
+		img := firstString(row, "url_campic", "imageUrl", "image_url", "url")
+		if id == "" || !latOK || !lonOK || img == "" || !collectorutil.ValidLatLon(lat, lon) {
+			continue
+		}
+		name := propx.FirstNonEmpty(firstString(row, "position_txt", "direction_txt", "name"), "ASFINAG Webcam")
+		props := cameraProps(map[string]any{
+			"feed_url":   img,
+			"thumb_url":  img,
+			"camera_id":  id,
+			"raw_source": "asfinag_odo",
+		}, now, "asfinag_webcams", "ASFINAG", asfinagWebcamsURL, "https://www.asfinag.at/", name, "AT")
+		put(out, "asfinag:"+id, lat, lon, props)
+	}
+}
+
+func (c *Collector) addOntario511(ctx context.Context, now time.Time, out map[string]features.Feature) {
+	var raw any
+	if err := httpx.GetJSONWithClient(ctx, c.client, ontario511CamerasURL, map[string]string{"Accept": "application/json"}, &raw); err != nil {
+		return
+	}
+	addCameraMapRows(now, out, "ontario511", "ontario_511_cameras", "Ontario 511", ontario511CamerasURL, "https://511on.ca/", "CA", "Ontario 511 Camera", cameraMaps(raw, "cameras", "data"))
+}
+
+func (c *Collector) addAlberta511(ctx context.Context, now time.Time, out map[string]features.Feature) {
+	var raw any
+	if err := httpx.GetJSONWithClient(ctx, c.client, alberta511CamerasURL, map[string]string{"Accept": "application/json"}, &raw); err != nil {
+		return
+	}
+	addCameraMapRows(now, out, "alberta511", "alberta_511_cameras", "Alberta 511", alberta511CamerasURL, "https://511.alberta.ca/", "CA", "Alberta 511 Camera", cameraMaps(raw, "cameras", "data"))
+}
+
+func (c *Collector) addTravelMidwest(ctx context.Context, now time.Time, out map[string]features.Feature) {
+	var raw any
+	if err := httpx.GetJSONWithClient(ctx, c.client, travelMidwestCameraURL, map[string]string{"Accept": "application/json"}, &raw); err != nil {
+		return
+	}
+	addCameraMapRows(now, out, "travelmidwest", "travel_midwest_cameras", "Travel Midwest", travelMidwestCameraURL, "https://www.travelmidwest.com/", "US", "Travel Midwest Camera", cameraMaps(raw, "cameraReports", "cameras", "data"))
+}
+
+func (c *Collector) addSingaporeTrafficImages(ctx context.Context, now time.Time, out map[string]features.Feature) {
+	var raw struct {
+		Items []struct {
+			Timestamp string `json:"timestamp"`
+			Cameras   []struct {
+				Timestamp string `json:"timestamp"`
+				Image     string `json:"image"`
+				CameraID  string `json:"camera_id"`
+				Location  struct {
+					Latitude  float64 `json:"latitude"`
+					Longitude float64 `json:"longitude"`
+				} `json:"location"`
+			} `json:"cameras"`
+		} `json:"items"`
+	}
+	if err := httpx.GetJSONWithClient(ctx, c.client, singaporeTrafficURL, map[string]string{"Accept": "application/json"}, &raw); err != nil {
+		return
+	}
+	for _, item := range raw.Items {
+		for _, cam := range item.Cameras {
+			lat, lon := cam.Location.Latitude, cam.Location.Longitude
+			if cam.CameraID == "" || !collectorutil.ValidLatLon(lat, lon) {
+				continue
+			}
+			props := cameraProps(map[string]any{
+				"feed_url":          cam.Image,
+				"thumb_url":         cam.Image,
+				"camera_id":         cam.CameraID,
+				"snapshot_time":     cam.Timestamp,
+				"collection_time":   item.Timestamp,
+				"source_event_link": "singapore_realtime",
+			}, now, "singapore_lta_traffic_images", "data.gov.sg / LTA Singapore", singaporeTrafficURL, "https://data.gov.sg/", "Singapore Traffic Camera "+cam.CameraID, "SG")
+			put(out, "sg-lta:"+cam.CameraID, lat, lon, props)
+		}
 	}
 }
 
@@ -316,6 +424,94 @@ out body 500;`, radiusM, lat, lon)
 		return nil, err
 	}
 	return raw.Elements, nil
+}
+
+func firstString(m map[string]any, keys ...string) string {
+	for _, key := range keys {
+		if s := strings.TrimSpace(propx.StringAt(m, key)); s != "" {
+			return s
+		}
+	}
+	return ""
+}
+
+func firstFloat(m map[string]any, keys ...string) (float64, bool) {
+	for _, key := range keys {
+		if v, ok := m[key]; ok {
+			if f, ok := propx.Float(v); ok {
+				return f, true
+			}
+		}
+	}
+	return 0, false
+}
+
+func cameraMaps(v any, childKeys ...string) []map[string]any {
+	switch x := v.(type) {
+	case []any:
+		out := make([]map[string]any, 0, len(x))
+		for _, item := range x {
+			if m, ok := item.(map[string]any); ok {
+				out = append(out, m)
+			}
+		}
+		return out
+	case map[string]any:
+		for _, key := range childKeys {
+			if child, ok := x[key]; ok {
+				if rows := cameraMaps(child, childKeys...); len(rows) > 0 {
+					return rows
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func firstViewURL(m map[string]any) string {
+	for _, key := range []string{"Views", "views"} {
+		raw, ok := m[key]
+		if !ok {
+			continue
+		}
+		rows, ok := raw.([]any)
+		if !ok {
+			continue
+		}
+		for _, item := range rows {
+			view, ok := item.(map[string]any)
+			if !ok {
+				continue
+			}
+			if s := firstString(view, "Url", "url", "ImageUrl", "imageUrl"); s != "" {
+				return s
+			}
+		}
+	}
+	return ""
+}
+
+func addCameraMapRows(now time.Time, out map[string]features.Feature, idPrefix, inventorySource, provider, endpoint, publicURL, country, defaultName string, rows []map[string]any) {
+	for i, row := range rows {
+		lat, latOK := firstFloat(row, "latitude", "Latitude", "lat", "Lat")
+		lon, lonOK := firstFloat(row, "longitude", "Longitude", "lng", "lon", "Long")
+		img := firstString(row, "imageUrl", "ImageUrl", "imageURL", "ImageURL", "Url", "url")
+		if img == "" {
+			img = firstViewURL(row)
+		}
+		if !latOK || !lonOK || !collectorutil.ValidLatLon(lat, lon) {
+			continue
+		}
+		id := propx.FirstNonEmpty(firstString(row, "id", "Id", "cameraId", "CameraId", "cameraID", "CameraID"), collectorutil.StableID(fmt.Sprintf("%.6f|%.6f|%s", lat, lon, img)))
+		name := propx.FirstNonEmpty(firstString(row, "cameraName", "CameraName", "description", "Description", "Location", "location", "name", "Name", "roadway", "Roadway"), defaultName)
+		props := cameraProps(map[string]any{
+			"feed_url":     img,
+			"thumb_url":    img,
+			"camera_id":    id,
+			"source_index": i,
+		}, now, inventorySource, provider, endpoint, publicURL, name, country)
+		put(out, idPrefix+":"+id, lat, lon, props)
+	}
 }
 
 func cameraProps(base map[string]any, seen time.Time, inventorySource, provider, endpoint, publicURL, name, country string) map[string]any {

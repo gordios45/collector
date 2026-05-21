@@ -39,6 +39,7 @@ func nvdRateDelay(hasKey bool) time.Duration {
 
 type nvdRecord struct {
 	CVE          string    `json:"cve"`
+	RecordSource string    `json:"record_source,omitempty"`
 	Published    string    `json:"published,omitempty"`
 	LastModified string    `json:"last_modified,omitempty"`
 	VulnStatus   string    `json:"vuln_status,omitempty"`
@@ -73,7 +74,7 @@ func fetchNVD(ctx context.Context, client *http.Client, cve string, apiKey strin
 	}
 	defer r.Body.Close()
 	if r.StatusCode == http.StatusNotFound {
-		return nvdRecord{CVE: cve, NotFound: true, FetchedAt: time.Now().UTC()}, nil
+		return nvdRecord{CVE: cve, RecordSource: "nvd", NotFound: true, FetchedAt: time.Now().UTC()}, nil
 	}
 	if r.StatusCode == http.StatusForbidden || r.StatusCode == http.StatusTooManyRequests {
 		body, _ := io.ReadAll(io.LimitReader(r.Body, 200))
@@ -88,7 +89,7 @@ func fetchNVD(ctx context.Context, client *http.Client, cve string, apiKey strin
 		return nvdRecord{}, fmt.Errorf("decode: %w", err)
 	}
 	if resp.TotalResults == 0 || len(resp.Vulnerabilities) == 0 {
-		return nvdRecord{CVE: cve, NotFound: true, FetchedAt: time.Now().UTC()}, nil
+		return nvdRecord{CVE: cve, RecordSource: "nvd", NotFound: true, FetchedAt: time.Now().UTC()}, nil
 	}
 	return parseNVDRecord(resp.Vulnerabilities[0].CVE), nil
 }
@@ -152,6 +153,7 @@ type nvdReference struct {
 func parseNVDRecord(c nvdCVE) nvdRecord {
 	rec := nvdRecord{
 		CVE:          c.ID,
+		RecordSource: "nvd",
 		Published:    c.Published,
 		LastModified: c.LastModified,
 		VulnStatus:   c.VulnStatus,

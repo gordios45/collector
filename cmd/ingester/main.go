@@ -33,6 +33,7 @@ import (
 	"github.com/gordios45/collector/internal/collectors/copernicus_gdo_drought"
 	"github.com/gordios45/collector/internal/collectors/copernicus_sentinel"
 	"github.com/gordios45/collector/internal/collectors/cyber_threats"
+	"github.com/gordios45/collector/internal/collectors/deepstate_frontlines"
 	"github.com/gordios45/collector/internal/collectors/direct_weather_alerts"
 	"github.com/gordios45/collector/internal/collectors/eia930"
 	"github.com/gordios45/collector/internal/collectors/eia_wpsr"
@@ -63,6 +64,7 @@ import (
 	"github.com/gordios45/collector/internal/collectors/ibtracs"
 	"github.com/gordios45/collector/internal/collectors/ifrc_go"
 	"github.com/gordios45/collector/internal/collectors/inform_risk"
+	"github.com/gordios45/collector/internal/collectors/internetdb_exposure"
 	"github.com/gordios45/collector/internal/collectors/ioda"
 	"github.com/gordios45/collector/internal/collectors/jma_rsmc"
 	"github.com/gordios45/collector/internal/collectors/jtwc"
@@ -128,6 +130,7 @@ import (
 	"github.com/gordios45/collector/internal/collectors/swdi_radar_signatures"
 	"github.com/gordios45/collector/internal/collectors/thailand_tmd_alerts"
 	"github.com/gordios45/collector/internal/collectors/tle"
+	"github.com/gordios45/collector/internal/collectors/tor_exit_nodes"
 	"github.com/gordios45/collector/internal/collectors/tor_metrics"
 	"github.com/gordios45/collector/internal/collectors/travel_advisories"
 	"github.com/gordios45/collector/internal/collectors/tropomi"
@@ -302,6 +305,10 @@ func main() {
 	{
 		c, err := cctv_cameras.New(pool)
 		regFeature("cctv_cameras", c, err)
+	}
+	{
+		c, err := deepstate_frontlines.New()
+		regFeature("deepstate_frontlines", c, err)
 	}
 	{
 		c, err := noaa_sua.New(pool)
@@ -720,6 +727,14 @@ func main() {
 	{
 		c, err := cyber_threats.New()
 		reg("cyber_threats", c, err)
+	}
+	{
+		c, err := internetdb_exposure.New()
+		reg("internetdb_exposure", c, err)
+	}
+	{
+		c, err := tor_exit_nodes.New()
+		reg("tor_exit_nodes", c, err)
 	}
 	// Cloudflare Radar — auto-registers when CF_RADAR_TOKEN is set.
 	if os.Getenv("CF_RADAR_TOKEN") != "" {

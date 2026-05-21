@@ -109,3 +109,45 @@ func TestWalkOTCMNestedInventory(t *testing.T) {
 		}
 	}
 }
+
+func TestCameraInventoryParsersForAdditionalSources(t *testing.T) {
+	now := time.Date(2026, 5, 21, 12, 0, 0, 0, time.UTC)
+	out := map[string]features.Feature{}
+
+	addASFINAGRows(now, out, []map[string]any{{
+		"wcs_id":       "AT-1",
+		"wgs84_lat":    48.2,
+		"wgs84_lon":    16.3,
+		"position_txt": "Vienna A23",
+		"url_campic":   "https://asfinag.example/cam.jpg",
+	}})
+	addCameraMapRows(now, out, "ontario511", "ontario_511_cameras", "Ontario 511", ontario511CamerasURL, "https://511on.ca/", "CA", "Ontario 511 Camera", []map[string]any{{
+		"id":          "on-1",
+		"latitude":    43.7,
+		"longitude":   -79.4,
+		"description": "Toronto",
+		"imageUrl":    "https://on.example/cam.jpg",
+	}})
+	addCameraMapRows(now, out, "alberta511", "alberta_511_cameras", "Alberta 511", alberta511CamerasURL, "https://511.alberta.ca/", "CA", "Alberta 511 Camera", []map[string]any{{
+		"Id":        "ab-1",
+		"Latitude":  53.5,
+		"Longitude": -113.5,
+		"Location":  "Edmonton",
+		"Views": []any{
+			map[string]any{"Url": "https://ab.example/cam.jpg"},
+		},
+	}})
+
+	if len(out) != 3 {
+		t.Fatalf("len(out) = %d, want 3", len(out))
+	}
+	if out["asfinag:AT-1"].Props["inventory_source"] != "asfinag_webcams" {
+		t.Fatalf("asfinag inventory_source = %v", out["asfinag:AT-1"].Props["inventory_source"])
+	}
+	if out["ontario511:on-1"].Props["thumb_url"] != "https://on.example/cam.jpg" {
+		t.Fatalf("ontario thumb_url = %v", out["ontario511:on-1"].Props["thumb_url"])
+	}
+	if out["alberta511:ab-1"].Props["thumb_url"] != "https://ab.example/cam.jpg" {
+		t.Fatalf("alberta thumb_url = %v", out["alberta511:ab-1"].Props["thumb_url"])
+	}
+}

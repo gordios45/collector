@@ -297,9 +297,14 @@ func (c *Collector) fillNVD(ctx context.Context, vulns []kevVuln) {
 			continue
 		}
 		newRec, err := fetchNVD(ctx, c.nvdClient, v.CVEID, c.nvdAPIKey)
-		if err != nil {
-			// Stop on rate-limit signals — don't burn the budget retrying.
-			return
+		if err != nil || newRec.NotFound {
+			mitreRec, mitreErr := fetchMITRECVE(ctx, c.httpClient, v.CVEID)
+			if mitreErr == nil {
+				newRec = mitreRec
+			} else if err != nil {
+				// Stop on rate-limit signals only if the MITRE fallback also failed.
+				return
+			}
 		}
 		c.mu.Lock()
 		c.nvdCache[v.CVEID] = newRec
@@ -320,6 +325,9 @@ func (c *Collector) attachNVD(props map[string]any, cve string) {
 	c.mu.Unlock()
 	if !ok || rec.NotFound {
 		return
+	}
+	if rec.RecordSource != "" {
+		props["cve_record_source"] = rec.RecordSource
 	}
 	props["nvd_published"] = rec.Published
 	props["nvd_last_modified"] = rec.LastModified

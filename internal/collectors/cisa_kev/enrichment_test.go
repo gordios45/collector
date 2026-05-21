@@ -13,8 +13,8 @@ func TestParseEPSSScoreDate(t *testing.T) {
 	cases := map[string]string{
 		"#model_version:v2025.03.14,score_date:2026-04-26T12:55:00Z\n": "2026-04-26",
 		"#model_version:v1,score_date:2026-04-26\n":                    "2026-04-26",
-		"":                                                             "",
-		"# header without score_date\n":                                 "",
+		"":                              "",
+		"# header without score_date\n": "",
 	}
 	for in, want := range cases {
 		got := parseEPSSScoreDate(in)
@@ -113,6 +113,52 @@ func TestVulnrichmentURL_BadInput(t *testing.T) {
 		if _, err := vulnrichmentURL(bad); err == nil {
 			t.Errorf("expected error for %q", bad)
 		}
+	}
+}
+
+const sampleMITRE = `{
+  "cveMetadata": {
+    "cveId": "CVE-2024-3094",
+    "datePublished": "2024-03-29T18:15:07.313Z",
+    "dateUpdated": "2024-04-12T18:15:07.313Z",
+    "state": "PUBLISHED"
+  },
+  "containers": {
+    "cna": {
+      "descriptions": [{"lang": "en", "value": "Malicious code was discovered in xz."}],
+      "metrics": [{
+        "cvssV3_1": {
+          "baseScore": 10,
+          "baseSeverity": "CRITICAL",
+          "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        }
+      }],
+      "problemTypes": [{"descriptions": [{"lang": "en", "cweId": "CWE-506", "description": "Embedded Malicious Code"}]}],
+      "references": [{"url": "https://www.openwall.com/lists/oss-security/2024/03/29/4"}]
+    }
+  }
+}`
+
+func TestParseMITRERecord(t *testing.T) {
+	var raw mitreRecord
+	if err := json.Unmarshal([]byte(sampleMITRE), &raw); err != nil {
+		t.Fatal(err)
+	}
+	rec := parseMITRERecord(raw, "CVE-2024-3094")
+	if rec.RecordSource != "mitre_cve_awg" {
+		t.Fatalf("RecordSource = %q", rec.RecordSource)
+	}
+	if rec.CVE != "CVE-2024-3094" || !strings.Contains(rec.Description, "xz") {
+		t.Fatalf("parsed record = %+v", rec)
+	}
+	if rec.CVSS31 == nil || rec.CVSS31.BaseScore != 10 || rec.CVSS31.BaseSeverity != "CRITICAL" {
+		t.Fatalf("CVSS31 = %+v", rec.CVSS31)
+	}
+	if len(rec.Weaknesses) != 1 || rec.Weaknesses[0] != "CWE-506" {
+		t.Fatalf("Weaknesses = %v", rec.Weaknesses)
+	}
+	if len(rec.References) != 1 {
+		t.Fatalf("References = %v", rec.References)
 	}
 }
 
