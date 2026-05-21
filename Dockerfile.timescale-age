@@ -18,20 +18,11 @@ RUN apt-get update \
     && echo "${AGE_SHA512}  /tmp/apache-age.tar.gz" | sha512sum -c - \
     && mkdir /tmp/apache-age \
     && tar -xzf /tmp/apache-age.tar.gz -C /tmp/apache-age --strip-components=1 \
-    && make -C /tmp/apache-age PG_CONFIG=/usr/lib/postgresql/${POSTGRES_MAJOR}/bin/pg_config install \
-    && tar -C / -czf /tmp/apache-age-install.tar.gz \
-       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/age.so \
-       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/bitcode/age \
-       usr/lib/postgresql/${POSTGRES_MAJOR}/lib/bitcode/age.index.bc \
-       usr/share/postgresql/${POSTGRES_MAJOR}/extension/age.control \
-       usr/share/postgresql/${POSTGRES_MAJOR}/extension/age--${AGE_VERSION}.sql \
+    && make -C /tmp/apache-age PG_CONFIG=/usr/lib/postgresql/${POSTGRES_MAJOR}/bin/pg_config DESTDIR=/tmp/apache-age-install install \
     && rm -rf /tmp/apache-age /tmp/apache-age.tar.gz \
     && rm -rf /var/lib/apt/lists/*
 
 FROM ${TIMESCALE_HA_IMAGE}
 
-COPY --from=age-build /tmp/apache-age-install.tar.gz /tmp/apache-age-install.tar.gz
-USER root
-RUN tar -C / -xzf /tmp/apache-age-install.tar.gz \
-    && rm /tmp/apache-age-install.tar.gz
+COPY --from=age-build /tmp/apache-age-install/ /
 USER postgres

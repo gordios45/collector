@@ -1,8 +1,15 @@
+.git/
+.gitignore
+.agents/
+.codex/
+.idea/
 bin/
 tile-cache/
 backups/
 .cache/
 .env
+.env-local
+.env.*
 .DS_Store
 .github/
 tmp_resources/
