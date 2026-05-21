@@ -3,7 +3,10 @@
 
 package usgs_shakemap
 
-import "testing"
+import (
+	"encoding/json"
+	"testing"
+)
 
 func TestFirstProductAndEnrichmentHelpers(t *testing.T) {
 	raw := []any{map[string]any{
@@ -38,5 +41,28 @@ func TestFirstProductAndEnrichmentHelpers(t *testing.T) {
 	}
 	if props["shakemap_grid_url"] != "https://example.test/grid.xml" {
 		t.Fatalf("grid url=%v", props["shakemap_grid_url"])
+	}
+}
+
+func TestCopyProductFloatsSkipsNonFiniteValues(t *testing.T) {
+	props := map[string]any{}
+	copyProductFloats(props, "shakemap", map[string]string{
+		"maxmmi":   "nan",
+		"maxpga":   "NaN",
+		"maxpgv":   "+Inf",
+		"maxpsa10": "-Inf",
+		"maxpsa03": "6.2",
+	}, "maxmmi", "maxpga", "maxpgv", "maxpsa10", "maxpsa03")
+
+	for _, key := range []string{"shakemap_maxmmi", "shakemap_maxpga", "shakemap_maxpgv", "shakemap_maxpsa10"} {
+		if _, ok := props[key]; ok {
+			t.Fatalf("non-finite value copied for %s: %+v", key, props)
+		}
+	}
+	if props["shakemap_maxpsa03"] != 6.2 {
+		t.Fatalf("finite value not copied: %+v", props)
+	}
+	if _, err := json.Marshal(props); err != nil {
+		t.Fatalf("props should remain JSON encodable: %v", err)
 	}
 }

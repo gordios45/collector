@@ -11,6 +11,7 @@ package usgs_shakemap
 import (
 	"context"
 	"fmt"
+	"math"
 	"strconv"
 	"strings"
 	"time"
@@ -259,11 +260,15 @@ func cleanKey(s string) string {
 }
 
 func parseFloat(s string) (float64, bool) {
+	s = strings.TrimSpace(s)
 	if s == "" {
 		return 0, false
 	}
 	v, err := strconv.ParseFloat(s, 64)
-	return v, err == nil
+	if err != nil || math.IsNaN(v) || math.IsInf(v, 0) {
+		return 0, false
+	}
+	return v, true
 }
 
 func str(v any) string {
